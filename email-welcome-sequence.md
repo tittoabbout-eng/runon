@@ -37,7 +37,7 @@ Just the stuff that works.
 
 — Taha
 
-P.S. Come join the Discord if you want to ask questions or see what other people are building. It's free, and it's worth it: [DISCORD LINK]
+P.S. Come join the Discord if you want to ask questions or see what other people are building. It's free, and it's worth it: https://discord.gg/BHkMuFEez4
 
 ---
 
