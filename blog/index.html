@@ -2,15 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog — Real AI Workflows for Real Businesses | Run On AI</title>
   <meta name="description" content="Practical guides on using AI to run a real business — replace agencies, build tools, write your own website, and stop paying for things you can do yourself." />
-  <link rel="canonical" href="https://runonai.io/blog" />
+  <link rel="canonical" href="https://runonai.io/blog/" />
   <meta property="og:title" content="Blog — Run On AI" />
   <meta property="og:description" content="Real AI workflows for real businesses. No hype. No theory. Stuff that actually works." />
   <meta property="og:image" content="https://runonai.io/assets/og-image.png" />
-  <meta property="og:url" content="https://runonai.io/blog" />
+  <meta property="og:url" content="https://runonai.io/blog/" />
   <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog — Run On AI" />
+  <meta name="twitter:description" content="Real AI workflows for real businesses. No hype. No theory. Stuff that actually works." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -90,7 +94,23 @@
       .article-card.featured { grid-column: auto; grid-template-columns: 1fr; padding: 28px 24px; }
       footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
     }
-  </style>
+  
+/* ── MOBILE NAV ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:400;flex-shrink:0;}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text,#eeeef5);border-radius:2px;transition:transform .25s,opacity .25s;}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){
+  .nav-burger{display:flex;}
+  .nav-links{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(5,5,10,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.08);padding:1rem 2rem 1.5rem;flex-direction:column;gap:0;z-index:299;}
+  .nav-links.mob-open{display:flex;}
+  .nav-links li{padding:0;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .nav-links li:last-child{border-bottom:none;}
+  .nav-links a{display:block;padding:14px 4px;font-size:0.95rem;color:var(--text,#eeeef5)!important;-webkit-text-fill-color:var(--text,#eeeef5)!important;}
+  .nav-links a:hover{color:var(--cyan,#00D4FF)!important;-webkit-text-fill-color:var(--cyan,#00D4FF)!important;}
+  .nav-cta{margin-top:8px;text-align:center;padding:12px!important;background:linear-gradient(135deg,#00D4FF,#9B6FEA)!important;-webkit-text-fill-color:#fff!important;border-radius:9px;font-weight:700!important;}
+}</style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2972H1GC2"></script>
   <script>
@@ -109,6 +129,7 @@
 </div>
 <nav>
   <a href="/" class="nav-logo">Run On AI</a>
+  <button class="nav-burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="/about">About</a></li>
     <li><a href="/tools">Tools</a></li>
@@ -189,6 +210,39 @@
       <span class="read-link">Read →</span>
     </a>
 
+    <a href="/blog/claude-vs-chatgpt-small-business/" class="article-card reveal">
+      <div class="card-cat">AI Tools</div>
+      <h2 class="card-title">Claude vs ChatGPT for Small Business — Which One Actually Earns Its Keep?</h2>
+      <p class="card-excerpt">Both are capable. But they're built differently, and that matters depending on how you run your business. A plain comparison for owners who want results, not benchmarks.</p>
+      <div class="card-meta">
+        <span class="card-time">7 min read</span>
+        <span class="card-tag">Comparison</span>
+      </div>
+      <span class="read-link">Read →</span>
+    </a>
+
+    <a href="/blog/automate-small-business-with-ai/" class="article-card reveal">
+      <div class="card-cat purple">Automation</div>
+      <h2 class="card-title">How to Automate Your Small Business With AI — Without Hiring Anyone</h2>
+      <p class="card-excerpt">The grunt work that eats your week — quotes, follow-ups, content, admin — can mostly be handled by AI now. Here's what to automate first and how to actually set it up.</p>
+      <div class="card-meta">
+        <span class="card-time">8 min read</span>
+        <span class="card-tag" style="background:rgba(155,111,234,0.07);border-color:rgba(155,111,234,0.2);color:var(--purple)">Automation</span>
+      </div>
+      <span class="read-link" style="color:var(--purple)">Read →</span>
+    </a>
+
+    <a href="/blog/ai-tools-australia-small-business-2026/" class="article-card reveal">
+      <div class="card-cat pink">Australia</div>
+      <h2 class="card-title">Best AI Tools for Australian Small Businesses in 2026 — What's Actually Worth It</h2>
+      <p class="card-excerpt">A ground-level review of the AI tools that are genuinely useful for Aussie small businesses right now — with real pricing, honest takes, and what to skip.</p>
+      <div class="card-meta">
+        <span class="card-time">9 min read</span>
+        <span class="card-tag" style="background:rgba(255,111,216,0.07);border-color:rgba(255,111,216,0.2);color:var(--pink)">Australia</span>
+      </div>
+      <span class="read-link" style="color:var(--pink)">Read →</span>
+    </a>
+
   </div>
 
   <!-- Also check out -->
@@ -208,7 +262,7 @@
   <div class="footer-links">
     <a href="/">Home</a><a href="/about">About</a><a href="/tools">Tools</a>
     <a href="/blog">Blog</a><a href="/prompts">Prompts</a><a href="/faq">FAQ</a>
-    <a href="/free">Free Download</a><a href="/privacy">Privacy</a>
+    <a href="/start">Start Here</a><a href="/free">Free Download</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
     <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
   </div>
 </footer>
@@ -242,6 +296,32 @@ tick();
 window.addEventListener('scroll',()=>{ document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%'; });
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function(){
+  var burger=document.querySelector('.nav-burger');
+  var links=document.querySelector('.nav-links');
+  if(!burger||!links)return;
+  burger.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open=links.classList.toggle('mob-open');
+    burger.setAttribute('aria-expanded',String(open));
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('nav')){
+      links.classList.remove('mob-open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+  // Close on nav link click
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('mob-open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+})();
 </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Custom Instructions for Claude and ChatGPT — The Setup Most People Skip | Run On AI</title>
   <meta name="description" content="One setup and every conversation starts from full context. This is one of the highest-leverage things you can do to improve AI results — and almost nobody does it properly." />
@@ -11,6 +12,9 @@
   <meta property="og:image" content="https://runonai.io/assets/og-image.png" />
   <meta property="og:url" content="https://runonai.io/blog/custom-instructions-claude-chatgpt/" />
   <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Custom Instructions for Claude and ChatGPT — The Setup Most People Skip" />
+  <meta name="twitter:description" content="One setup and every conversation starts from full context. This is one of the highest-leverage things you can do to improve AI results — and almost nobody does it properly." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -127,7 +131,23 @@
       .related{padding:0 20px 60px;}
       footer{padding:24px 20px;flex-direction:column;align-items:flex-start;}
     }
-</style>
+
+/* ── MOBILE NAV ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:400;flex-shrink:0;}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text,#eeeef5);border-radius:2px;transition:transform .25s,opacity .25s;}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){
+  .nav-burger{display:flex;}
+  .nav-links{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(5,5,10,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.08);padding:1rem 2rem 1.5rem;flex-direction:column;gap:0;z-index:299;}
+  .nav-links.mob-open{display:flex;}
+  .nav-links li{padding:0;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .nav-links li:last-child{border-bottom:none;}
+  .nav-links a{display:block;padding:14px 4px;font-size:0.95rem;color:var(--text,#eeeef5)!important;-webkit-text-fill-color:var(--text,#eeeef5)!important;}
+  .nav-links a:hover{color:var(--cyan,#00D4FF)!important;-webkit-text-fill-color:var(--cyan,#00D4FF)!important;}
+  .nav-cta{margin-top:8px;text-align:center;padding:12px!important;background:linear-gradient(135deg,#00D4FF,#9B6FEA)!important;-webkit-text-fill-color:#fff!important;border-radius:9px;font-weight:700!important;}
+}</style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2972H1GC2"></script>
   <script>
@@ -143,10 +163,13 @@
 <div class="orb-layer"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
 <nav>
   <a href="/" class="nav-logo">Run On AI</a>
+  <button class="nav-burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="/about">About</a></li>
     <li><a href="/tools">Tools</a></li>
     <li><a href="/blog" class="active">Blog</a></li>
+    <li><a href="/prompts">Prompts</a></li>
+    <li><a href="/faq">FAQ</a></li>
     <li><a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a></li>
     <li><a href="/free" class="nav-cta">Free Prompts →</a></li>
   </ul>
@@ -247,7 +270,7 @@ Never: use phrases like "Certainly!", "Great question!", "As an AI language mode
   <div class="footer-links">
     <a href="/">Home</a><a href="/about">About</a><a href="/tools">Tools</a>
     <a href="/blog">Blog</a><a href="/prompts">Prompts</a><a href="/faq">FAQ</a>
-    <a href="/free">Free Download</a><a href="/privacy">Privacy</a>
+    <a href="/start">Start Here</a><a href="/free">Free Download</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
     <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
   </div>
 </footer>
@@ -279,6 +302,32 @@ tick();
 window.addEventListener('scroll',()=>{document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';});
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+
+<script>
+(function(){
+  var burger=document.querySelector('.nav-burger');
+  var links=document.querySelector('.nav-links');
+  if(!burger||!links)return;
+  burger.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open=links.classList.toggle('mob-open');
+    burger.setAttribute('aria-expanded',String(open));
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('nav')){
+      links.classList.remove('mob-open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+  // Close on nav link click
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('mob-open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+})();
 </script>
 </body>
 </html>

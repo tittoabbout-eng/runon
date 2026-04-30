@@ -2,13 +2,19 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Prompt Library — Run On AI | 50+ Prompts for Business</title>
 <meta name="description" content="Browse 50+ tested prompts for business writing, client communication, marketing, SEO, and building tools with AI. Free to copy and use.">
 <meta property="og:title" content="Prompt Library — Run On AI">
 <meta property="og:description" content="50+ real prompts for real business tasks. Filter by category. Copy with one click.">
+<meta property="og:image" content="https://runonai.io/assets/og-image.png">
+<meta property="og:url" content="https://runonai.io/prompts/">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://runonai.io/prompts">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Prompt Library — Run On AI">
+<meta name="twitter:description" content="50+ real prompts for real business tasks. Filter by category. Copy with one click.">
+<link rel="canonical" href="https://runonai.io/prompts/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -103,7 +109,23 @@ footer{position:relative;z-index:1;padding:2.5rem 2rem;border-top:1px solid var(
   .prompts-controls,.prompts-count,.prompts-grid{padding:0 1.2rem}
   .prompts-grid{grid-template-columns:1fr}
 }
-</style>
+
+/* ── MOBILE NAV ── */
+.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;z-index:400;flex-shrink:0;}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--text,#eeeef5);border-radius:2px;transition:transform .25s,opacity .25s;}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:768px){
+  .nav-burger{display:flex;}
+  .nav-links{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(5,5,10,0.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.08);padding:1rem 2rem 1.5rem;flex-direction:column;gap:0;z-index:299;}
+  .nav-links.mob-open{display:flex;}
+  .nav-links li{padding:0;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .nav-links li:last-child{border-bottom:none;}
+  .nav-links a{display:block;padding:14px 4px;font-size:0.95rem;color:var(--text,#eeeef5)!important;-webkit-text-fill-color:var(--text,#eeeef5)!important;}
+  .nav-links a:hover{color:var(--cyan,#00D4FF)!important;-webkit-text-fill-color:var(--cyan,#00D4FF)!important;}
+  .nav-cta{margin-top:8px;text-align:center;padding:12px!important;background:linear-gradient(135deg,#00D4FF,#9B6FEA)!important;-webkit-text-fill-color:#fff!important;border-radius:9px;font-weight:700!important;}
+}</style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-B2972H1GC2"></script>
   <script>
@@ -112,12 +134,22 @@ footer{position:relative;z-index:1;padding:2.5rem 2rem;border-top:1px solid var(
     gtag('js', new Date());
     gtag('config', 'G-B2972H1GC2');
   </script>
+
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Prompt Library — Run On AI",
+  "description": "Browse 50+ tested prompts for business writing, client communication, marketing, SEO, and building tools with AI.",
+  "url": "https://runonai.io/prompts/",
+  "publisher": {"@type": "Organization", "name": "Run On AI", "url": "https://runonai.io"}
+}</script>
 </head>
 <body>
 <canvas id="bg-canvas"></canvas>
 
 <nav>
   <a href="/" class="nav-logo">Run On AI</a>
+  <button class="nav-burger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="/about">About</a></li>
     <li><a href="/tools">Tools</a></li>
@@ -513,7 +545,7 @@ footer{position:relative;z-index:1;padding:2.5rem 2rem;border-top:1px solid var(
   <div class="footer-links">
     <a href="/">Home</a><a href="/about">About</a><a href="/tools">Tools</a>
     <a href="/blog">Blog</a><a href="/prompts">Prompts</a><a href="/faq">FAQ</a>
-    <a href="/free">Free Download</a><a href="/privacy">Privacy</a>
+    <a href="/start">Start Here</a><a href="/free">Free Download</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a>
     <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
   </div>
 </footer>
@@ -600,6 +632,32 @@ function updateCount(){
     countEl.textContent=`Showing ${visible.length} prompt${visible.length!==1?'s':''}`;
   }
 }
+</script>
+
+<script>
+(function(){
+  var burger=document.querySelector('.nav-burger');
+  var links=document.querySelector('.nav-links');
+  if(!burger||!links)return;
+  burger.addEventListener('click',function(e){
+    e.stopPropagation();
+    var open=links.classList.toggle('mob-open');
+    burger.setAttribute('aria-expanded',String(open));
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('nav')){
+      links.classList.remove('mob-open');
+      burger.setAttribute('aria-expanded','false');
+    }
+  });
+  // Close on nav link click
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('mob-open');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+})();
 </script>
 </body>
 </html>
