@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>50 AI Prompts That Actually Work — Free Download | Run On AI</title>
+  <meta name="description" content="50 ready-to-use AI prompts for writing, business, marketing, automation, and learning. Free PDF download — use with Claude, ChatGPT, or any AI." />
+  <meta property="og:title" content="50 AI Prompts That Actually Work — Free PDF" />
+  <meta property="og:description" content="50 ready-to-use prompts for Claude, ChatGPT, or any AI. Writing, business, marketing, automation, learning." />
+  <meta property="og:image" content="https://runonai.io/assets/og-image.png" />
+  <meta property="og:url" content="https://runonai.io/free" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:     #05050a;
+      --card:   #0f0f18;
+      --border: rgba(255,255,255,0.07);
+      --cyan:   #00D4FF;
+      --purple: #9B6FEA;
+      --pink:   #FF6FD8;
+      --text:   #eeeef5;
+      --muted:  #6666aa;
+      --radius: 14px;
+      --font:   'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── CANVAS ── */
+    #bg-canvas {
+      position: fixed; inset: 0;
+      z-index: 0; pointer-events: none;
+    }
+
+    /* ── ORBS ── */
+    .orb-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(130px); }
+    .orb-1 { width: 600px; height: 600px; background: var(--cyan);   opacity: 0.07; top: -150px; left: -150px; }
+    .orb-2 { width: 550px; height: 550px; background: var(--purple); opacity: 0.08; bottom: -100px; right: -150px; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 300;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(5,5,10,0.65);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-weight: 900; font-size: 1.05rem; letter-spacing: -0.03em;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-decoration: none;
+    }
+
+    .nav-back {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      max-width: 760px; margin: 0 auto;
+      padding: 100px 24px 60px; text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan); font-size: 0.73rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 100px; margin-bottom: 32px;
+      opacity: 0; animation: fadeUp 0.7s 0.05s ease forwards;
+    }
+
+    .badge-dot {
+      width: 6px; height: 6px; background: var(--cyan); border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity:1; box-shadow: 0 0 8px var(--cyan); }
+      50%      { opacity:0.4; box-shadow: 0 0 2px var(--cyan); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 900; line-height: 1.05; letter-spacing: -0.045em;
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.7s 0.15s ease forwards;
+    }
+
+    .hero h1 .grad {
+      background: linear-gradient(100deg, var(--cyan), var(--purple) 55%, var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; background-size: 200% auto;
+      animation: shimmer 4s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .hero-sub {
+      font-size: 1.08rem; color: var(--muted); max-width: 520px;
+      margin: 0 auto 40px; line-height: 1.75;
+      opacity: 0; animation: fadeUp 0.7s 0.25s ease forwards;
+    }
+
+    /* ── DOWNLOAD CARD ── */
+    .download-wrap {
+      position: relative; z-index: 1;
+      max-width: 620px; margin: 0 auto;
+      padding: 0 24px 80px;
+      opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
+    }
+
+    .download-card {
+      position: relative; background: var(--card);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: 20px; padding: 48px 44px;
+      overflow: hidden;
+      box-shadow: 0 0 80px rgba(0,212,255,0.05), 0 0 40px rgba(155,111,234,0.05);
+    }
+
+    .download-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 0%, rgba(0,212,255,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse at 90% 100%, rgba(155,111,234,0.08) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    .glow-line {
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--cyan) 40%, var(--purple) 60%, transparent 100%);
+      background-size: 200% 100%;
+      animation: slide-glow 3s linear infinite;
+    }
+    @keyframes slide-glow {
+      0%   { background-position: -100% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    /* PDF PREVIEW ICON */
+    .pdf-preview {
+      position: relative; z-index: 1;
+      width: 80px; height: 100px;
+      background: linear-gradient(135deg, #1a1a28, #12121e);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 10px; margin: 0 auto 32px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 6px;
+      box-shadow: 0 0 30px rgba(0,212,255,0.1);
+    }
+
+    .pdf-preview::after {
+      content: '';
+      position: absolute; top: -1px; right: -1px;
+      width: 20px; height: 20px;
+      background: rgba(0,212,255,0.15);
+      border-left: 1px solid rgba(0,212,255,0.2);
+      border-bottom: 1px solid rgba(0,212,255,0.2);
+      border-radius: 0 0 0 6px;
+      clip-path: polygon(0 0, 100% 100%, 0 100%);
+    }
+
+    .pdf-label {
+      font-size: 0.55rem; font-weight: 800; letter-spacing: 0.08em;
+      color: var(--cyan); text-transform: uppercase;
+    }
+
+    .pdf-icon-lines { display: flex; flex-direction: column; gap: 4px; }
+    .pdf-line {
+      height: 2px; border-radius: 1px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      opacity: 0.5;
+    }
+    .pdf-line:nth-child(1) { width: 40px; }
+    .pdf-line:nth-child(2) { width: 34px; }
+    .pdf-line:nth-child(3) { width: 28px; }
+
+    .download-card h2 {
+      position: relative; z-index: 1;
+      font-size: 1.5rem; font-weight: 800; letter-spacing: -0.035em;
+      text-align: center; margin-bottom: 12px;
+    }
+
+    .download-card .desc {
+      position: relative; z-index: 1;
+      color: var(--muted); font-size: 0.92rem; line-height: 1.7;
+      text-align: center; margin-bottom: 28px;
+    }
+
+    /* CATEGORIES */
+    .cat-grid {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-bottom: 32px;
+    }
+
+    .cat {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .cat:hover { border-color: rgba(0,212,255,0.2); background: rgba(0,212,255,0.03); }
+
+    .cat-num {
+      min-width: 28px; height: 28px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; color: #fff;
+    }
+
+    .cat-name { font-size: 0.82rem; font-weight: 600; letter-spacing: -0.01em; }
+    .cat-count { font-size: 0.73rem; color: var(--muted); margin-top: 1px; }
+
+    /* DOWNLOAD BTN */
+    .dl-btn {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: #fff; font-weight: 700; font-size: 1rem; letter-spacing: -0.01em;
+      padding: 16px 32px; border-radius: 12px; text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 0 40px rgba(0,212,255,0.2), 0 4px 20px rgba(0,0,0,0.4);
+      margin-bottom: 16px;
+    }
+    .dl-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 80px rgba(0,212,255,0.4), 0 0 30px rgba(155,111,234,0.3), 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .dl-btn svg { flex-shrink: 0; }
+
+    .dl-note {
+      position: relative; z-index: 1;
+      text-align: center; color: var(--muted); font-size: 0.78rem;
+    }
+
+    /* ── WHAT'S INSIDE ── */
+    .inside-wrap {
+      position: relative; z-index: 1;
+      max-width: 760px; margin: 0 auto; padding: 0 24px 100px;
+    }
+
+    .section-label {
+      font-size: 0.71rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 18px;
+    }
+
+    .inside-wrap h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 900; letter-spacing: -0.04em; margin-bottom: 40px;
+    }
+
+    .prompt-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .prompt-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .prompt-item:hover {
+      border-color: rgba(0,212,255,0.2);
+      transform: translateX(4px);
+      box-shadow: -4px 0 20px rgba(0,212,255,0.06);
+    }
+
+    .p-num {
+      min-width: 32px; height: 32px;
+      background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(155,111,234,0.15));
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; color: var(--cyan); flex-shrink: 0;
+    }
+
+    .p-title { font-size: 0.9rem; font-weight: 600; letter-spacing: -0.015em; margin-bottom: 4px; }
+    .p-desc  { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── BOTTOM CTA ── */
+    .bottom-cta {
+      position: relative; z-index: 1;
+      text-align: center; padding: 0 24px 100px;
+    }
+
+    .bottom-cta p {
+      color: var(--muted); font-size: 0.88rem; margin-top: 20px;
+    }
+
+    .bottom-cta p a {
+      color: var(--cyan); text-decoration: none;
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 40px 24px; text-align: center;
+    }
+    footer a { color: var(--muted); text-decoration: none; font-size: 0.84rem; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
+    footer p { color: var(--muted); font-size: 0.81rem; }
+    .footer-links { display: flex; gap: 24px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
+
+    @media (max-width: 640px) {
+      nav { padding: 16px 20px; }
+      .download-card { padding: 36px 24px; }
+      .cat-grid { grid-template-columns: 1fr; }
+      .hero { padding: 70px 20px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="orb-layer" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Run On AI</a>
+    <a href="/" class="nav-back">← Back to home</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Free · No email required · 50 prompts
+    </div>
+    <h1>
+      <span class="grad">50 AI Prompts</span><br />
+      That Actually Work
+    </h1>
+    <p class="hero-sub">
+      Ready-to-use prompts for Claude, ChatGPT, or any AI.
+      Writing, business, marketing, automation, and learning.
+      Download the PDF. Use it today.
+    </p>
+  </section>
+
+  <!-- DOWNLOAD CARD -->
+  <div class="download-wrap">
+    <div class="download-card">
+      <div class="glow-line"></div>
+
+      <div class="pdf-preview">
+        <div class="pdf-label">PDF</div>
+        <div class="pdf-icon-lines">
+          <div class="pdf-line"></div>
+          <div class="pdf-line"></div>
+          <div class="pdf-line"></div>
+        </div>
+      </div>
+
+      <h2>Top 50 AI Prompts</h2>
+      <p class="desc">
+        50 prompts across 5 categories. Each one is specific,
+        ready to copy, and built for real work — not demos.
+      </p>
+
+      <div class="cat-grid">
+        <div class="cat">
+          <div class="cat-num">10</div>
+          <div>
+            <div class="cat-name">Writing & Content</div>
+            <div class="cat-count">Prompts 1–10</div>
+          </div>
+        </div>
+        <div class="cat">
+          <div class="cat-num">10</div>
+          <div>
+            <div class="cat-name">Business & Productivity</div>
+            <div class="cat-count">Prompts 11–20</div>
+          </div>
+        </div>
+        <div class="cat">
+          <div class="cat-num">10</div>
+          <div>
+            <div class="cat-name">Marketing & Sales</div>
+            <div class="cat-count">Prompts 21–30</div>
+          </div>
+        </div>
+        <div class="cat">
+          <div class="cat-num">10</div>
+          <div>
+            <div class="cat-name">AI & Automation</div>
+            <div class="cat-count">Prompts 31–40</div>
+          </div>
+        </div>
+        <div class="cat" style="grid-column: span 2; max-width: 240px; margin: 0 auto; width: 100%;">
+          <div class="cat-num">10</div>
+          <div>
+            <div class="cat-name">Personal & Learning</div>
+            <div class="cat-count">Prompts 41–50</div>
+          </div>
+        </div>
+      </div>
+
+      <a href="/assets/top-50-ai-prompts.pdf" download="RunOnAI-Top-50-Prompts.pdf" class="dl-btn">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M9 2v10M5 8l4 4 4-4M3 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Download Free PDF
+      </a>
+      <p class="dl-note">Free. No signup needed. 50 prompts, 5 categories.</p>
+    </div>
+  </div>
+
+  <!-- WHAT'S INSIDE -->
+  <div class="inside-wrap">
+    <div class="reveal">
+      <div class="section-label">What's Inside</div>
+      <h2>A few of the 50 prompts</h2>
+    </div>
+
+    <div class="prompt-list">
+      <div class="prompt-item reveal">
+        <div class="p-num">1</div>
+        <div>
+          <div class="p-title">Rewrite this like a human wrote it</div>
+          <div class="p-desc">Remove AI patterns, robotic phrasing, and overly formal language while keeping the same meaning.</div>
+        </div>
+      </div>
+      <div class="prompt-item reveal">
+        <div class="p-num">2</div>
+        <div>
+          <div class="p-title">Write a viral hook for any topic</div>
+          <div class="p-desc">5 opening hooks for short-form video, each under 10 words, designed to stop the scroll.</div>
+        </div>
+      </div>
+      <div class="prompt-item reveal">
+        <div class="p-num">13</div>
+        <div>
+          <div class="p-title">Create a standard operating procedure</div>
+          <div class="p-desc">Step-by-step SOP with purpose, required tools, numbered steps, common mistakes, and success criteria.</div>
+        </div>
+      </div>
+      <div class="prompt-item reveal">
+        <div class="p-num">31</div>
+        <div>
+          <div class="p-title">Build an n8n workflow description</div>
+          <div class="p-desc">Step-by-step automation workflow with the exact n8n node for each step and what data it passes.</div>
+        </div>
+      </div>
+      <div class="prompt-item reveal">
+        <div class="p-num">36</div>
+        <div>
+          <div class="p-title">Build an AI agent brief</div>
+          <div class="p-desc">Technical brief covering inputs, decision logic, required tools/APIs, outputs, and error handling.</div>
+        </div>
+      </div>
+      <div class="prompt-item reveal">
+        <div class="p-num">43</div>
+        <div>
+          <div class="p-title">Give me a second opinion</div>
+          <div class="p-desc">Devil's advocate mode — 3 biggest risks, 2 wrong assumptions, what to validate before moving forward.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <a href="/assets/top-50-ai-prompts.pdf" download="RunOnAI-Top-50-Prompts.pdf" class="dl-btn" style="display:inline-flex; width:auto; padding:15px 36px;">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M9 2v10M5 8l4 4 4-4M3 14h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Download All 50 Prompts →
+    </a>
+    <p>
+      More free content daily on
+      <a href="https://tiktok.com/@runonai01" target="_blank" rel="noopener">TikTok</a>,
+      <a href="https://instagram.com/run_on_ai" target="_blank" rel="noopener">Instagram</a>, and
+      <a href="https://youtube.com/@RunOnAIOfficial" target="_blank" rel="noopener">YouTube</a>.
+      <br />Questions? Join the <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>.
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
+      <a href="https://tiktok.com/@runonai01" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://youtube.com/@RunOnAIOfficial" target="_blank" rel="noopener">YouTube</a>
+    </div>
+    <p>© 2026 Run On AI · runonai.io</p>
+  </footer>
+
+  <script>
+  (() => {
+    /* Canvas dot grid + beams */
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, dots = [], beams = [];
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+      buildDots();
+    }
+
+    function buildDots() {
+      dots = [];
+      const gap = 44;
+      for (let r = 0; r <= Math.ceil(H/gap); r++)
+        for (let c = 0; c <= Math.ceil(W/gap); c++)
+          dots.push({ x: c*gap, y: r*gap, alpha: 0.15 });
+      beams = Array.from({length:4}, createBeam);
+    }
+
+    function createBeam() {
+      return {
+        x: Math.random()*W, y: Math.random()*H,
+        angle: Math.random()*Math.PI*2,
+        speed: 0.4+Math.random()*0.5,
+        len: 100+Math.random()*160,
+        width: 1+Math.random()*1.2,
+        hue: Math.random()>0.5?195:265,
+        alpha: 0.06+Math.random()*0.07,
+        life: 0, maxLife: 200+Math.random()*280
+      };
+    }
+
+    let mx = -999, my = -999;
+    window.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; }, {passive:true});
+
+    function draw() {
+      ctx.clearRect(0,0,W,H);
+
+      dots.forEach(d => {
+        const dist = Math.hypot(d.x-mx, d.y-my);
+        const glow = Math.max(0, 1-dist/200);
+        d.alpha += (0.14 + glow*0.45 - d.alpha)*0.06;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, 1, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(100,120,200,${d.alpha})`;
+        ctx.fill();
+      });
+
+      beams.forEach((b,i) => {
+        b.life++;
+        b.x += Math.cos(b.angle)*b.speed;
+        b.y += Math.sin(b.angle)*b.speed;
+        const a = b.alpha * Math.sin(Math.PI * b.life/b.maxLife);
+        const grd = ctx.createLinearGradient(b.x,b.y, b.x+Math.cos(b.angle)*b.len, b.y+Math.sin(b.angle)*b.len);
+        grd.addColorStop(0, `hsla(${b.hue},100%,70%,0)`);
+        grd.addColorStop(0.4, `hsla(${b.hue},100%,70%,${a})`);
+        grd.addColorStop(1, `hsla(${b.hue},100%,70%,0)`);
+        ctx.beginPath();
+        ctx.moveTo(b.x,b.y);
+        ctx.lineTo(b.x+Math.cos(b.angle)*b.len, b.y+Math.sin(b.angle)*b.len);
+        ctx.strokeStyle = grd; ctx.lineWidth = b.width; ctx.stroke();
+        if (b.life>=b.maxLife || b.x<-300||b.x>W+300||b.y<-300||b.y>H+300)
+          beams[i] = createBeam();
+      });
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', resize, {passive:true});
+    resize(); draw();
+
+    /* Scroll reveal */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const sibs = [...e.target.parentElement.querySelectorAll('.reveal:not(.in)')];
+        setTimeout(() => e.target.classList.add('in'), sibs.indexOf(e.target)*100);
+        io.unobserve(e.target);
+      });
+    }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  })();
+  </script>
+</body>
+</html>
