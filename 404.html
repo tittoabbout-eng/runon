@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Page Not Found — Run On AI</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#05050a;--border:rgba(255,255,255,0.07);--cyan:#00D4FF;--purple:#9B6FEA;--pink:#FF6FD8;--text:#eeeef5;--muted:#8888aa}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+.content{position:relative;z-index:1;max-width:520px}
+.num{font-size:clamp(5rem,20vw,10rem);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+h1{font-size:1.4rem;font-weight:700;margin-bottom:.75rem}
+p{color:var(--muted);margin-bottom:2rem;line-height:1.6}
+.links{display:flex;flex-wrap:wrap;gap:.7rem;justify-content:center}
+.links a{padding:.6rem 1.2rem;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:500;transition:all .2s}
+.links a:hover{border-color:rgba(0,212,255,0.4);color:var(--text)}
+.links a.primary{background:linear-gradient(135deg,var(--cyan),var(--purple));border-color:transparent;color:#fff;font-weight:700}
+.links a.primary:hover{opacity:.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;background:rgba(5,5,10,0.65);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<nav>
+  <a href="/" class="nav-logo">Run On AI</a>
+</nav>
+<div class="content">
+  <div class="num">404</div>
+  <h1>This page doesn't exist</h1>
+  <p>Either the link is broken, the page moved, or something got lost along the way. Here are some places worth going instead:</p>
+  <div class="links">
+    <a href="/" class="primary">Go home</a>
+    <a href="/blog">Read the blog</a>
+    <a href="/prompts">Browse prompts</a>
+    <a href="/free">Free prompt pack</a>
+    <a href="/faq">FAQ</a>
+  </div>
+</div>
+<script>
+const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
+let W,H,mouse={x:-999,y:-999};
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+const BEAMS=Array.from({length:3},()=>({x:Math.random()*1400,y:Math.random()*900,angle:Math.random()*Math.PI*2,speed:0.3+Math.random()*0.4,len:200+Math.random()*120,hue:Math.random()>0.5?'rgba(0,212,255,':'rgba(155,111,234,',alpha:0.04+Math.random()*0.04}));
+function tick(){
+  ctx.clearRect(0,0,W,H);
+  for(let x=0;x<W+28;x+=28)for(let y=0;y<H+28;y+=28){
+    const d=Math.hypot(x-mouse.x,y-mouse.y),g=Math.max(0,1-d/160),a=0.05+g*0.3;
+    ctx.fillStyle=g>0.1?`rgba(0,212,255,${a})`:`rgba(120,120,180,${a*0.5})`;
+    ctx.beginPath();ctx.arc(x,y,0.9+g*1.1,0,Math.PI*2);ctx.fill();
+  }
+  BEAMS.forEach(b=>{
+    b.x+=Math.cos(b.angle)*b.speed;b.y+=Math.sin(b.angle)*b.speed;
+    if(b.x<-300||b.x>W+300||b.y<-300||b.y>H+300){b.x=Math.random()*W;b.y=Math.random()*H;b.angle=Math.random()*Math.PI*2;}
+    const x2=b.x+Math.cos(b.angle)*b.len,y2=b.y+Math.sin(b.angle)*b.len;
+    const gr=ctx.createLinearGradient(b.x,b.y,x2,y2);
+    gr.addColorStop(0,'transparent');gr.addColorStop(0.5,b.hue+b.alpha+')');gr.addColorStop(1,'transparent');
+    ctx.strokeStyle=gr;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(b.x,b.y);ctx.lineTo(x2,y2);ctx.stroke();
+  });
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</body>
+</html>

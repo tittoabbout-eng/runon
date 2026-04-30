@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>10 Most Useful AI Prompts for Running a Small Business in Australia | Run On AI</title>
+  <meta name="description" content="Not generic prompt tips — the actual prompts used every week in a real Australian trade business. Pricing, proposals, client emails, Google reviews, content, and more." />
+  <link rel="canonical" href="https://runonai.io/blog/ai-prompts-small-business-australia/" />
+  <meta property="og:title" content="10 Most Useful AI Prompts for Running a Small Business in Australia" />
+  <meta property="og:description" content="Not generic prompt tips — the actual prompts used every week in a real Australian trade business. Pricing, proposals, client emails, Google reviews, content, and more." />
+  <meta property="og:image" content="https://runonai.io/assets/og-image.png" />
+  <meta property="og:url" content="https://runonai.io/blog/ai-prompts-small-business-australia/" />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "10 Most Useful AI Prompts for Running a Small Business in Australia",
+  "description": "Not generic prompt tips — the actual prompts used every week in a real Australian trade business. Pricing, proposals, emails, content, and more.",
+  "author": {"@type": "Organization", "name": "Run On AI"},
+  "publisher": {"@type": "Organization", "name": "Run On AI", "url": "https://runonai.io"},
+  "datePublished": "2026-04-22",
+  "url": "https://runonai.io/blog/ai-prompts-small-business-australia/"
+}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    :root{
+      --bg:#05050a;--surface:#0d0d14;--card:#0f0f18;
+      --border:rgba(255,255,255,0.07);--cyan:#00D4FF;
+      --purple:#9B6FEA;--pink:#FF6FD8;--text:#eeeef5;
+      --muted:#6666aa;--font:'Inter',system-ui,sans-serif;
+    }
+    body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    #progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));z-index:1000;transition:width 0.1s linear;}
+    #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+    .orb-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+    .orb{position:absolute;border-radius:50%;filter:blur(130px);}
+    .orb-1{width:600px;height:600px;background:var(--cyan);opacity:0.05;top:-200px;left:-150px;}
+    .orb-2{width:500px;height:500px;background:var(--purple);opacity:0.06;bottom:10%;right:-150px;}
+    nav{position:sticky;top:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(5,5,10,0.65);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-weight:900;font-size:1.05rem;letter-spacing:-0.03em;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
+    .nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-cta{background:linear-gradient(135deg,var(--cyan),var(--purple))!important;color:#fff!important;padding:9px 22px;border-radius:9px;font-weight:700!important;font-size:0.85rem!important;transition:transform 0.2s,box-shadow 0.2s!important;}
+    .nav-cta:hover{transform:translateY(-1px)!important;box-shadow:0 0 30px rgba(0,212,255,0.3)!important;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+
+    /* Article header */
+    .article-header{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:90px 24px 48px;}
+    .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:24px;opacity:0;animation:fadeUp 0.5s 0.05s ease forwards;}
+    .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+    .breadcrumb a:hover{color:var(--cyan);}
+    .breadcrumb span{color:rgba(102,102,170,0.5);margin:0 8px;}
+    .art-cat{display:inline-block;background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.18);color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:18px;opacity:0;animation:fadeUp 0.5s 0.1s ease forwards;}
+    .art-cat.purple{background:rgba(155,111,234,0.07);border-color:rgba(155,111,234,0.2);color:var(--purple);}
+    .art-cat.pink{background:rgba(255,111,216,0.07);border-color:rgba(255,111,216,0.2);color:var(--pink);}
+    .article-header h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.07;letter-spacing:-0.04em;margin-bottom:22px;opacity:0;animation:fadeUp 0.6s 0.2s ease forwards;}
+    .grad{background:linear-gradient(100deg,var(--cyan) 0%,var(--purple) 55%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shimmer 4s linear infinite;}
+    .art-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:32px;opacity:0;animation:fadeUp 0.5s 0.35s ease forwards;}
+    .art-meta span{font-size:0.82rem;color:var(--muted);}
+    .art-meta .dot{color:rgba(102,102,170,0.4);}
+    .art-lead{font-size:1.12rem;color:rgba(200,200,230,0.85);line-height:1.8;border-left:3px solid var(--cyan);padding-left:20px;opacity:0;animation:fadeUp 0.5s 0.45s ease forwards;}
+
+    /* Article body */
+    .article-body{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 24px 80px;}
+    .article-body h2{font-size:1.55rem;font-weight:800;letter-spacing:-0.03em;margin:44px 0 16px;color:var(--text);}
+    .article-body h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;margin:28px 0 10px;color:var(--text);}
+    .article-body p{font-size:1rem;color:rgba(200,200,230,0.85);line-height:1.85;margin-bottom:20px;}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:0;list-style:none;}
+    .article-body li{display:flex;align-items:flex-start;gap:10px;font-size:0.97rem;color:rgba(200,200,230,0.85);line-height:1.7;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+    .article-body li:last-child{border-bottom:none;}
+    .article-body li::before{content:'→';color:var(--cyan);font-size:0.8rem;font-weight:700;margin-top:3px;flex-shrink:0;}
+    .article-body ol{counter-reset:ol-counter;}
+    .article-body ol li::before{content:counter(ol-counter);counter-increment:ol-counter;color:var(--cyan);font-size:0.78rem;font-weight:900;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .article-body strong{color:var(--text);font-weight:700;}
+    .article-body a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;}
+    .pull-quote{border-left:3px solid var(--purple);background:rgba(155,111,234,0.05);border-radius:0 12px 12px 0;padding:20px 26px;margin:32px 0;}
+    .pull-quote p{font-size:1.1rem;color:var(--text);line-height:1.7;font-weight:500;font-style:italic;margin:0!important;}
+    .tip-box{background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
+    .tip-box .tip-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+    .tip-box p{font-size:0.95rem;color:rgba(200,200,230,0.85);line-height:1.7;margin:0!important;}
+    .prompt-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;position:relative;}
+    .prompt-box .prompt-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+    .prompt-box p{font-size:0.9rem;color:rgba(170,170,210,0.9);line-height:1.75;font-style:italic;margin:0!important;}
+    .prompt-box .copy-hint{font-size:0.72rem;color:var(--muted);margin-top:10px;display:block;}
+    .hr-section{height:1px;background:var(--border);margin:44px 0;}
+
+    /* CTA section */
+    .article-cta{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px 44px;margin:50px 0;position:relative;overflow:hidden;text-align:center;}
+    .article-cta::before{content:'';position:absolute;inset:0;border-radius:18px;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.06) 0%,transparent 55%);pointer-events:none;}
+    .glow-line{position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),transparent);}
+    .article-cta h3{font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:10px;}
+    .article-cta p{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:440px;margin:0 auto 24px;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;text-decoration:none;font-size:0.92rem;font-weight:700;padding:13px 28px;border-radius:11px;transition:transform 0.2s,box-shadow 0.2s;}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,212,255,0.3);}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:0.88rem;font-weight:600;padding:12px 24px;border-radius:11px;transition:border-color 0.2s,transform 0.2s;}
+    .btn-ghost:hover{border-color:rgba(0,212,255,0.3);transform:translateY(-2px);}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+    /* Related posts */
+    .related{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 24px 80px;}
+    .related h3{font-size:1.1rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:20px;}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+    .related-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;}
+    .related-card:hover{border-color:rgba(0,212,255,0.2);transform:translateY(-2px);}
+    .related-card .rc-cat{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+    .related-card .rc-title{font-size:0.88rem;font-weight:700;line-height:1.4;color:var(--text);}
+
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+    .footer-brand{font-weight:800;font-size:0.9rem;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--text);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+    @media(max-width:700px){
+      nav{padding:16px 20px;}
+      .nav-links li:not(:last-child){display:none;}
+      .article-header{padding:70px 20px 36px;}
+      .article-body{padding:0 20px 60px;}
+      .article-cta{padding:28px 22px;}
+      .related{padding:0 20px 60px;}
+      footer{padding:24px 20px;flex-direction:column;align-items:flex-start;}
+    }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="orb-layer"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+<nav>
+  <a href="/" class="nav-logo">Run On AI</a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/tools">Tools</a></li>
+    <li><a href="/blog" class="active">Blog</a></li>
+    <li><a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a></li>
+    <li><a href="/free" class="nav-cta">Free Prompts →</a></li>
+  </ul>
+</nav>
+<div class="article-header">
+  <div class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/blog">Blog</a><span>›</span>10 Most Useful AI Prompts for Running a Small Business in Australia</div>
+  <div class="art-cat pink">Prompts</div>
+  <h1>10 Most Useful AI Prompts for Running a Small Business in Australia</h1>
+  <div class="art-meta">
+    <span>22 April 2026</span>
+    <span class="dot">·</span>
+    <span>6 min read</span>
+    <span class="dot">·</span>
+    <span>runonai.io</span>
+  </div>
+  <p class="art-lead">These aren't scraped from Twitter. These are the prompts that get used every week in a real Australian business — with the actual text, not just the idea.</p>
+</div>
+<div class="article-body reveal">
+<h2>Prompts that actually get used</h2>
+<p>There's no shortage of "100 best AI prompts" lists. Most of them are scraped from Twitter and have never been tested in an actual business. This list is different: these are the prompts that get used repeatedly, weekly, in a real operation. They're built for Australian small business context — GST, ABN, Australian English, local market realities.</p>
+<p>Each one includes the actual prompt text and what it's useful for. Swap the brackets for your real details.</p>
+
+<h2>1. The Margin Reality Check</h2>
+<p>Most businesses underprice because they only think about materials and time — not the full picture of what it costs to run the business and have that hour available to bill.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"I run a [trade/service type] business in [city]. My costs are: vehicle ($X/month), insurance ($X/month), tools/equipment ($X/month), phone/software ($X/month), marketing ($X/month), admin hours (X hrs/week at $X/hr). I work X billable hours per week, X weeks per year. Help me work out my true hourly cost of operation and what I need to charge per hour/job to make $X take-home after GST and super. Show your working."</p>
+</div>
+
+<h2>2. The Professional Quote Generator</h2>
+<p>Takes your rough notes from a site visit and turns them into a clean, professional quote document.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"Write a professional one-page quote for a [job type] for a client in [suburb]. Scope: [describe work]. Inclusions: [list]. Exclusions: [list]. Price: $[amount] inc. GST. Deposit: [X]% on acceptance. Balance on completion. Timeline: [timeframe]. My business name: [name], ABN: [number]. Tone: professional but not stiff. Include a simple acceptance line at the bottom."</p>
+</div>
+
+<h2>3. The Suburb Landing Page</h2>
+<p>For local SEO — a properly written page targeting a specific suburb, not a generic page with the suburb name swapped in.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"Write a service landing page for my [trade/service] business targeting clients in [suburb], [city]. I'm based in [home suburb], [X] km away. Services offered: [list]. What makes me different: [2-3 real points]. Typical job types in this area: [describe]. SEO target keyword: '[service] [suburb]'. Include a strong headline, 3-paragraph intro, services section, trust section, and CTA. Australian English. No corporate speak."</p>
+</div>
+
+<h2>4. The Difficult Email Writer</h2>
+<p>For the conversations you dread — scope changes, late payments, client complaints, bad reviews.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"Write an email to a client about [situation: e.g. 'a variation to the original scope of work due to [reason]', 'an overdue invoice for $X that is [X] days late', 'a complaint they made about [issue]']. I want to: [outcome you want]. Tone: professional, direct, and fair. Not defensive. Not grovelling. Australian English. Under 150 words."</p>
+</div>
+
+<h2>5. The Google Review Request</h2>
+<p>The right way to ask for a review — specific enough that clients know what to say, natural enough that they don't feel like they're filling out a form.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"I just completed [job type] for a client. Write a short text/message asking them to leave a Google review. Tell them what makes a helpful review: their situation before, what I did, what they'd tell a friend. Keep it warm and casual. Under 4 sentences. Don't use corporate phrases like 'your feedback is important to us'."</p>
+</div>
+
+<h2>6. The SOP Builder</h2>
+<p>Standard operating procedures — for anything you currently explain from scratch every time.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"Write a standard operating procedure for [task, e.g. 'how we onboard a new client from first enquiry to job start', 'our end-of-day site clean-up process', 'how we handle a warranty callback']. Include: who is responsible for each step, what tools/forms are used, what the output looks like, and what to do if something goes wrong. Format as a numbered checklist."</p>
+</div>
+
+<h2>7. The Google Business Profile Post</h2>
+<p>Google Business Profile posts improve your local visibility. This prompt generates a week's worth at once.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"Write 4 Google Business Profile posts for my [trade/service] business in [suburb]. Mix of formats: one about a recent job type, one answering a common question, one about a seasonal service tip, one about why local matters. Each under 150 words. Include a call to action. Australian English. Real, not marketing fluff."</p>
+</div>
+
+<h2>8. The Tax/Business Research Prompt</h2>
+<p>For getting a solid starting point on business questions before talking to your accountant — so you don't pay for questions you could have answered yourself.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"Explain [topic, e.g. 'how the instant asset write-off works for a sole trader in Australia', 'what expenses I can legitimately claim for a trade vehicle', 'how GST works for a business under $75k turnover'] in plain English. Include the key rules, any common mistakes people make, and what I should confirm with my accountant. No jargon."</p>
+</div>
+
+<div class="tip-box">
+  <div class="tip-label">Important</div>
+  <p>AI gives you a strong starting point on tax and business questions. Always confirm specifics with a registered accountant or the ATO. Think of AI as pre-research — it gets you informed before the conversation, not instead of it.</p>
+</div>
+
+<h2>9. The Client Brief Template</h2>
+<p>For capturing all the right information at the start of a job — so you don't get to site and realise you forgot to ask something important.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"Create a client brief template for a [job type] project. Include all the questions I need answered before I can quote accurately: dimensions, existing conditions, access, timing constraints, decision-makers, budget range, special requirements, and anything specific to [your trade]. Format as a fillable form I can send to clients before a site visit."</p>
+</div>
+
+<h2>10. The Competitor Intelligence Prompt</h2>
+<p>Understanding why competitors win jobs without having to guess.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt</div>
+  <p>"I run a [trade/service] business in [city]. My main competitors are [describe: e.g. 'large franchise operations', 'cheap solo operators', 'established local businesses with 20+ years']. Analyse what each type likely does better than me, what I likely do better than them, and what a client who chooses a competitor over me is probably prioritising. Then tell me what I should be emphasising in my marketing to attract clients who value what I'm genuinely best at."</p>
+</div>
+
+<h2>The pattern behind all of these</h2>
+<p>Every effective business prompt does the same three things: it gives context (who you are, what the situation is), it specifies the outcome (what format, tone, length), and it adds constraints (what to avoid, what Australian business context applies). Generic input gets generic output. The more specific you are, the more the AI sounds like it actually understands your business — because, in the context of that conversation, it does.</p>
+
+<div class="article-cta">
+  <div class="glow-line"></div>
+  <h3>40 more prompts in the free pack</h3>
+  <p>The full 50-prompt PDF includes power phrases, client attraction content, content creation, and the insider toolkit — plus everything above in a format you can keep.</p>
+  <div class="cta-btns">
+    <a href="/free" class="btn-primary">Download Free →</a>
+    <a href="/prompts" class="btn-ghost">Browse online →</a>
+  </div>
+</div>
+</div>
+<div class="related reveal">
+  <h3>Related articles</h3>
+  <div class="related-grid">
+    <a href="/blog/ai-for-trades-and-service-businesses/" class="related-card">
+      <div class="rc-cat">Business</div>
+      <div class="rc-title">AI for Tradies and Service Businesses</div>
+    </a>
+    <a href="/blog/custom-instructions-claude-chatgpt/" class="related-card">
+      <div class="rc-cat">Guide</div>
+      <div class="rc-title">Custom Instructions — The Setup Most People Skip</div>
+    </a>
+    <a href="/blog/replace-your-web-agency-with-ai/" class="related-card">
+      <div class="rc-cat">Website</div>
+      <div class="rc-title">Replace Your Web Agency With AI</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <span class="footer-brand">Run On AI</span>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/about">About</a><a href="/tools">Tools</a>
+    <a href="/blog">Blog</a><a href="/prompts">Prompts</a><a href="/faq">FAQ</a>
+    <a href="/free">Free Download</a><a href="/privacy">Privacy</a>
+    <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
+  </div>
+</footer>
+<script>
+const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
+let W,H,mouse={x:-999,y:-999};
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+const BEAMS=Array.from({length:4},()=>({x:Math.random()*1400,y:Math.random()*900,angle:Math.random()*Math.PI*2,speed:0.3+Math.random()*0.4,len:220+Math.random()*140,hue:Math.random()>0.5?'rgba(0,212,255,':'rgba(155,111,234,',alpha:0.05+Math.random()*0.05}));
+function tick(){
+  ctx.clearRect(0,0,W,H);
+  for(let x=0;x<W+28;x+=28)for(let y=0;y<H+28;y+=28){
+    const d=Math.hypot(x-mouse.x,y-mouse.y),g=Math.max(0,1-d/160),a=0.06+g*0.38;
+    ctx.fillStyle=g>0.1?`rgba(0,212,255,${a})`:`rgba(120,120,180,${a*0.5})`;
+    ctx.beginPath();ctx.arc(x,y,0.9+g*1.1,0,Math.PI*2);ctx.fill();
+  }
+  BEAMS.forEach(b=>{
+    b.x+=Math.cos(b.angle)*b.speed;b.y+=Math.sin(b.angle)*b.speed;
+    if(b.x<-300||b.x>W+300||b.y<-300||b.y>H+300){b.x=Math.random()*W;b.y=Math.random()*H;b.angle=Math.random()*Math.PI*2;}
+    const x2=b.x+Math.cos(b.angle)*b.len,y2=b.y+Math.sin(b.angle)*b.len;
+    const gr=ctx.createLinearGradient(b.x,b.y,x2,y2);
+    gr.addColorStop(0,'transparent');gr.addColorStop(0.5,b.hue+b.alpha+')');gr.addColorStop(1,'transparent');
+    ctx.strokeStyle=gr;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(b.x,b.y);ctx.lineTo(x2,y2);ctx.stroke();
+  });
+  requestAnimationFrame(tick);
+}
+tick();
+window.addEventListener('scroll',()=>{document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

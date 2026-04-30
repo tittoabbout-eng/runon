@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI for Tradies and Service Businesses — Real Use Cases, Not Theory | Run On AI</title>
+  <meta name="description" content="Practical AI applications for builders, joiners, plumbers, electricians, and other trade and service businesses in Australia. Website, quoting, admin, content — all of it." />
+  <link rel="canonical" href="https://runonai.io/blog/ai-for-trades-and-service-businesses/" />
+  <meta property="og:title" content="AI for Tradies and Service Businesses — Real Use Cases, Not Theory" />
+  <meta property="og:description" content="Practical AI applications for builders, joiners, plumbers, electricians, and other trade and service businesses in Australia. Website, quoting, admin, content — all of it." />
+  <meta property="og:image" content="https://runonai.io/assets/og-image.png" />
+  <meta property="og:url" content="https://runonai.io/blog/ai-for-trades-and-service-businesses/" />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI for Tradies and Service Businesses — Real Use Cases, Not Theory",
+  "description": "Practical AI applications for builders, joiners, plumbers, electricians, and other trade and service businesses in Australia.",
+  "author": {"@type": "Organization", "name": "Run On AI"},
+  "publisher": {"@type": "Organization", "name": "Run On AI", "url": "https://runonai.io"},
+  "datePublished": "2026-04-15",
+  "url": "https://runonai.io/blog/ai-for-trades-and-service-businesses/"
+}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    :root{
+      --bg:#05050a;--surface:#0d0d14;--card:#0f0f18;
+      --border:rgba(255,255,255,0.07);--cyan:#00D4FF;
+      --purple:#9B6FEA;--pink:#FF6FD8;--text:#eeeef5;
+      --muted:#6666aa;--font:'Inter',system-ui,sans-serif;
+    }
+    body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+    #progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));z-index:1000;transition:width 0.1s linear;}
+    #bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+    .orb-layer{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+    .orb{position:absolute;border-radius:50%;filter:blur(130px);}
+    .orb-1{width:600px;height:600px;background:var(--cyan);opacity:0.05;top:-200px;left:-150px;}
+    .orb-2{width:500px;height:500px;background:var(--purple);opacity:0.06;bottom:10%;right:-150px;}
+    nav{position:sticky;top:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(5,5,10,0.65);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-weight:900;font-size:1.05rem;letter-spacing:-0.03em;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none;}
+    .nav-links{display:flex;align-items:center;gap:36px;list-style:none;}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:0.88rem;font-weight:500;transition:color 0.2s;}
+    .nav-links a:hover,.nav-links a.active{color:var(--text);}
+    .nav-cta{background:linear-gradient(135deg,var(--cyan),var(--purple))!important;color:#fff!important;padding:9px 22px;border-radius:9px;font-weight:700!important;font-size:0.85rem!important;transition:transform 0.2s,box-shadow 0.2s!important;}
+    .nav-cta:hover{transform:translateY(-1px)!important;box-shadow:0 0 30px rgba(0,212,255,0.3)!important;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes shimmer{0%{background-position:0% center;}100%{background-position:200% center;}}
+
+    /* Article header */
+    .article-header{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:90px 24px 48px;}
+    .breadcrumb{font-size:0.78rem;color:var(--muted);margin-bottom:24px;opacity:0;animation:fadeUp 0.5s 0.05s ease forwards;}
+    .breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+    .breadcrumb a:hover{color:var(--cyan);}
+    .breadcrumb span{color:rgba(102,102,170,0.5);margin:0 8px;}
+    .art-cat{display:inline-block;background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.18);color:var(--cyan);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:18px;opacity:0;animation:fadeUp 0.5s 0.1s ease forwards;}
+    .art-cat.purple{background:rgba(155,111,234,0.07);border-color:rgba(155,111,234,0.2);color:var(--purple);}
+    .art-cat.pink{background:rgba(255,111,216,0.07);border-color:rgba(255,111,216,0.2);color:var(--pink);}
+    .article-header h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.07;letter-spacing:-0.04em;margin-bottom:22px;opacity:0;animation:fadeUp 0.6s 0.2s ease forwards;}
+    .grad{background:linear-gradient(100deg,var(--cyan) 0%,var(--purple) 55%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shimmer 4s linear infinite;}
+    .art-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:32px;opacity:0;animation:fadeUp 0.5s 0.35s ease forwards;}
+    .art-meta span{font-size:0.82rem;color:var(--muted);}
+    .art-meta .dot{color:rgba(102,102,170,0.4);}
+    .art-lead{font-size:1.12rem;color:rgba(200,200,230,0.85);line-height:1.8;border-left:3px solid var(--cyan);padding-left:20px;opacity:0;animation:fadeUp 0.5s 0.45s ease forwards;}
+
+    /* Article body */
+    .article-body{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 24px 80px;}
+    .article-body h2{font-size:1.55rem;font-weight:800;letter-spacing:-0.03em;margin:44px 0 16px;color:var(--text);}
+    .article-body h3{font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;margin:28px 0 10px;color:var(--text);}
+    .article-body p{font-size:1rem;color:rgba(200,200,230,0.85);line-height:1.85;margin-bottom:20px;}
+    .article-body ul,.article-body ol{margin:0 0 20px 0;padding-left:0;list-style:none;}
+    .article-body li{display:flex;align-items:flex-start;gap:10px;font-size:0.97rem;color:rgba(200,200,230,0.85);line-height:1.7;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+    .article-body li:last-child{border-bottom:none;}
+    .article-body li::before{content:'→';color:var(--cyan);font-size:0.8rem;font-weight:700;margin-top:3px;flex-shrink:0;}
+    .article-body ol{counter-reset:ol-counter;}
+    .article-body ol li::before{content:counter(ol-counter);counter-increment:ol-counter;color:var(--cyan);font-size:0.78rem;font-weight:900;background:rgba(0,212,255,0.1);border:1px solid rgba(0,212,255,0.2);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+    .article-body strong{color:var(--text);font-weight:700;}
+    .article-body a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px;}
+    .pull-quote{border-left:3px solid var(--purple);background:rgba(155,111,234,0.05);border-radius:0 12px 12px 0;padding:20px 26px;margin:32px 0;}
+    .pull-quote p{font-size:1.1rem;color:var(--text);line-height:1.7;font-weight:500;font-style:italic;margin:0!important;}
+    .tip-box{background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.15);border-radius:12px;padding:20px 24px;margin:24px 0;}
+    .tip-box .tip-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+    .tip-box p{font-size:0.95rem;color:rgba(200,200,230,0.85);line-height:1.7;margin:0!important;}
+    .prompt-box{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:20px 0;position:relative;}
+    .prompt-box .prompt-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
+    .prompt-box p{font-size:0.9rem;color:rgba(170,170,210,0.9);line-height:1.75;font-style:italic;margin:0!important;}
+    .prompt-box .copy-hint{font-size:0.72rem;color:var(--muted);margin-top:10px;display:block;}
+    .hr-section{height:1px;background:var(--border);margin:44px 0;}
+
+    /* CTA section */
+    .article-cta{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:40px 44px;margin:50px 0;position:relative;overflow:hidden;text-align:center;}
+    .article-cta::before{content:'';position:absolute;inset:0;border-radius:18px;background:radial-gradient(ellipse at 50% 0%,rgba(0,212,255,0.06) 0%,transparent 55%);pointer-events:none;}
+    .glow-line{position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--purple),transparent);}
+    .article-cta h3{font-size:1.3rem;font-weight:800;letter-spacing:-0.02em;margin-bottom:10px;}
+    .article-cta p{font-size:0.95rem;color:var(--muted);line-height:1.7;max-width:440px;margin:0 auto 24px;}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;text-decoration:none;font-size:0.92rem;font-weight:700;padding:13px 28px;border-radius:11px;transition:transform 0.2s,box-shadow 0.2s;}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(0,212,255,0.3);}
+    .btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:0.88rem;font-weight:600;padding:12px 24px;border-radius:11px;transition:border-color 0.2s,transform 0.2s;}
+    .btn-ghost:hover{border-color:rgba(0,212,255,0.3);transform:translateY(-2px);}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+    /* Related posts */
+    .related{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 24px 80px;}
+    .related h3{font-size:1.1rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:20px;}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;}
+    .related-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s;}
+    .related-card:hover{border-color:rgba(0,212,255,0.2);transform:translateY(-2px);}
+    .related-card .rc-cat{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px;}
+    .related-card .rc-title{font-size:0.88rem;font-weight:700;line-height:1.4;color:var(--text);}
+
+    footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;}
+    .footer-brand{font-weight:800;font-size:0.9rem;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+    .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+    .footer-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;transition:color 0.2s;}
+    .footer-links a:hover{color:var(--text);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .reveal.visible{opacity:1;transform:none;}
+    @media(max-width:700px){
+      nav{padding:16px 20px;}
+      .nav-links li:not(:last-child){display:none;}
+      .article-header{padding:70px 20px 36px;}
+      .article-body{padding:0 20px 60px;}
+      .article-cta{padding:28px 22px;}
+      .related{padding:0 20px 60px;}
+      footer{padding:24px 20px;flex-direction:column;align-items:flex-start;}
+    }
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="orb-layer"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+<nav>
+  <a href="/" class="nav-logo">Run On AI</a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/tools">Tools</a></li>
+    <li><a href="/blog" class="active">Blog</a></li>
+    <li><a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a></li>
+    <li><a href="/free" class="nav-cta">Free Prompts →</a></li>
+  </ul>
+</nav>
+<div class="article-header">
+  <div class="breadcrumb"><a href="/">Home</a><span>›</span><a href="/blog">Blog</a><span>›</span>AI for Tradies and Service Businesses — Real Use Cases, Not Theory</div>
+  <div class="art-cat purple">Business</div>
+  <h1>AI for Tradies and Service Businesses — Real Use Cases, Not Theory</h1>
+  <div class="art-meta">
+    <span>15 April 2026</span>
+    <span class="dot">·</span>
+    <span>9 min read</span>
+    <span class="dot">·</span>
+    <span>runonai.io</span>
+  </div>
+  <p class="art-lead">Almost every AI guide is written for 'entrepreneurs' and 'solopreneurs.' This one's for tradies, service businesses, and anyone running a real operation in Australia.</p>
+</div>
+<div class="article-body reveal">
+<h2>The content nobody's making for you</h2>
+<p>Almost every AI guide you can find right now is aimed at "entrepreneurs," "content creators," "solopreneurs," or "marketers." If you're a builder, a sparky, a plumber, a joiner, a painter, a landscaper, or anyone else who runs a trade or service business, you've probably noticed that most AI content has basically nothing to do with your life.</p>
+<p>The use cases are different. The pain points are different. The things you're spending money on that you shouldn't be are different. This guide is for you specifically.</p>
+
+<h2>Your website is costing you more than it should</h2>
+<p>The average trade website in Australia is either: (a) a template from a platform you pay $60–$120/month for, with generic copy that could describe any business in your category, or (b) something a web agency built for you several years ago, which you can't update yourself and costs you a retainer to manage.</p>
+<p>Neither is giving you what a modern local business website should: suburb-specific landing pages, genuine service descriptions with real pricing context, proper Google Business Profile alignment, and FAQ content that answers the questions your clients actually ask.</p>
+<p>AI changes this completely. You can now write every page of your own website — with your voice, your specific services, your service areas — in a weekend. It doesn't need to be perfect on day one. It needs to be yours, and it needs to be real.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt: Write a suburb service page</div>
+  <p>"I run a [trade type] business based in [suburb], Sydney. I service [list suburbs]. Write a landing page for clients in [target suburb] looking for [specific service]. Include: a headline, a short intro about local work in that area, my services listed clearly, why to choose a local specialist, and a CTA. Tone: professional, direct, warm. No corporate speak."</p>
+</div>
+
+<h2>Quoting and proposals in a fraction of the time</h2>
+<p>Tradies and service businesses spend an enormous amount of unpaid time on quotes. Site visits, measurements, calculations, writing up the scope, formatting the document, chasing clients. Every hour you spend on a quote that doesn't convert is an hour you didn't earn.</p>
+<p>AI can handle the writing and formatting end of this completely. You do the site visit and the measurements. You brief Claude on what was discussed. It writes the scope, the inclusions, the exclusions, the payment terms, and the professional presentation. What used to take 45 minutes takes 10.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt: Generate a quote from site notes</div>
+  <p>"I just visited a client for [job description]. Key scope: [what needs doing]. Inclusions: [what's covered]. Exclusions: [what's not]. My rate: [rate]. Materials estimate: [amount]. Payment terms: [terms]. Write a one-page professional quote. Tone: confident and clear, not stiff. Include a simple scope of work, what's included, what's not, total price, and payment terms."</p>
+</div>
+
+<h2>Client communications that don't drain you</h2>
+<p>The admin side of running a trade business is relentless. Following up quotes. Handling difficult conversations about scope changes. Managing clients who go quiet. Responding to complaints professionally when you're tired and frustrated. Every one of these is a situation where AI can draft something better than you'd write in the moment — then you review, edit, and send.</p>
+<ul>
+<li><strong>Quote follow-up:</strong> "Write a follow-up to a client I quoted [X days] ago. Professional, not desperate. Ask if they have questions. Under 4 sentences."</li>
+<li><strong>Scope change notification:</strong> "I need to tell a client the job has expanded beyond the original quote. Additional work: [describe]. Extra cost: [amount]. Write this clearly and professionally, acknowledge the inconvenience, explain why it's necessary."</li>
+<li><strong>Difficult payment conversation:</strong> "A client is [X days] overdue. Write a firm but professional follow-up. I want to maintain the relationship but be clear the invoice needs paying."</li>
+</ul>
+
+<h2>Know your actual margins</h2>
+<p>One of the most valuable things you can build with AI is a proper cost model for your business. Most trade businesses have a rough sense of their margins but have never mapped it out properly — materials are obvious, but what about vehicle costs per day, insurance amortised per job, unpaid admin hours, slow season buffers, and realistic wastage rates?</p>
+<p>Build this once with Claude. Give it your actual numbers. It will help you structure a proper cost breakdown for each job type. You'll likely find that some jobs you think are profitable are actually marginal — and some you've been underpricing out of habit.</p>
+
+<div class="tip-box">
+  <div class="tip-label">Real outcome from the field</div>
+  <p>A trade business owner built a full cost breakdown for every job type they quote — materials, labour, overhead, GST, target margin. It took one afternoon to build with Claude. They discovered they'd been underpricing two of their most common job types by 15–20%. Repriced. Margins improved immediately. No accountant required for this particular insight.</p>
+</div>
+
+<h2>Marketing content without hiring a content person</h2>
+<p>The single most effective marketing content for a trade business is real work — photos of finished jobs, before/afters, project stories. The AI can't take your photos. But it can write the captions, the post copy, the Google Business Profile updates, and the review request messages that make that content do its job.</p>
+<ul>
+<li>Give it a before/after description → it writes 3 caption options for different angles</li>
+<li>Describe a completed project → it writes a short case study you can post or put on your website</li>
+<li>Paste in a common question a client asked → it writes a social post answering it properly</li>
+<li>Ask it to write a Google review request → it will write something specific that actually gets detailed reviews instead of "great service"</li>
+</ul>
+
+<h2>Getting Google reviews that actually help you</h2>
+<p>Most businesses ask for reviews wrong. "Can you leave me a Google review?" gets you "Great job, 5 stars" — which tells the next potential client nothing. Here's the prompt that gets useful reviews:</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Prompt: Write a review request message</div>
+  <p>"Write a short message asking a client I just completed [job type] for to leave a Google review. Make it easy by telling them what to include: what their situation was before, what I did, and what they'd tell a friend. Keep it conversational. Under 5 sentences. Don't sound like a form letter."</p>
+</div>
+
+<p>A review that says "I needed a full kitchen renovation in a 1970s house with unusual ceiling heights — [business name] figured out the layout, sourced the benchtop I wanted, and had it done in the timeline they quoted" is worth ten times the generic one. The right request makes the difference.</p>
+
+<h2>The bottom line</h2>
+<p>AI won't do your job. It won't swing a hammer, run cable, or fit a cabinet. What it will do is handle every piece of the business that isn't the craft itself — and it'll do it faster, cheaper, and more consistently than most of the services you're currently paying for to handle it. That's the trade worth making.</p>
+
+<div class="article-cta">
+  <div class="glow-line"></div>
+  <h3>Prompts built for real businesses</h3>
+  <p>The free prompt pack includes a full category of business prompts — quotes, proposals, cost breakdowns, client communications, and more. Specifically written for people running actual operations.</p>
+  <div class="cta-btns">
+    <a href="/free" class="btn-primary">Download Free →</a>
+    <a href="/prompts" class="btn-ghost">Browse the prompt library →</a>
+  </div>
+</div>
+</div>
+<div class="related reveal">
+  <h3>Related articles</h3>
+  <div class="related-grid">
+    <a href="/blog/replace-your-web-agency-with-ai/" class="related-card">
+      <div class="rc-cat">Website</div>
+      <div class="rc-title">Replace Your Web Agency With AI</div>
+    </a>
+    <a href="/blog/ai-prompts-small-business-australia/" class="related-card">
+      <div class="rc-cat">Prompts</div>
+      <div class="rc-title">10 Most Useful Prompts for Small Business Australia</div>
+    </a>
+    <a href="/blog/claude-code-for-non-technical-people/" class="related-card">
+      <div class="rc-cat">Tools</div>
+      <div class="rc-title">Claude Code for Non-Technical People</div>
+    </a>
+  </div>
+</div>
+<footer>
+  <span class="footer-brand">Run On AI</span>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/about">About</a><a href="/tools">Tools</a>
+    <a href="/blog">Blog</a><a href="/prompts">Prompts</a><a href="/faq">FAQ</a>
+    <a href="/free">Free Download</a><a href="/privacy">Privacy</a>
+    <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
+  </div>
+</footer>
+<script>
+const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
+let W,H,mouse={x:-999,y:-999};
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+const BEAMS=Array.from({length:4},()=>({x:Math.random()*1400,y:Math.random()*900,angle:Math.random()*Math.PI*2,speed:0.3+Math.random()*0.4,len:220+Math.random()*140,hue:Math.random()>0.5?'rgba(0,212,255,':'rgba(155,111,234,',alpha:0.05+Math.random()*0.05}));
+function tick(){
+  ctx.clearRect(0,0,W,H);
+  for(let x=0;x<W+28;x+=28)for(let y=0;y<H+28;y+=28){
+    const d=Math.hypot(x-mouse.x,y-mouse.y),g=Math.max(0,1-d/160),a=0.06+g*0.38;
+    ctx.fillStyle=g>0.1?`rgba(0,212,255,${a})`:`rgba(120,120,180,${a*0.5})`;
+    ctx.beginPath();ctx.arc(x,y,0.9+g*1.1,0,Math.PI*2);ctx.fill();
+  }
+  BEAMS.forEach(b=>{
+    b.x+=Math.cos(b.angle)*b.speed;b.y+=Math.sin(b.angle)*b.speed;
+    if(b.x<-300||b.x>W+300||b.y<-300||b.y>H+300){b.x=Math.random()*W;b.y=Math.random()*H;b.angle=Math.random()*Math.PI*2;}
+    const x2=b.x+Math.cos(b.angle)*b.len,y2=b.y+Math.sin(b.angle)*b.len;
+    const gr=ctx.createLinearGradient(b.x,b.y,x2,y2);
+    gr.addColorStop(0,'transparent');gr.addColorStop(0.5,b.hue+b.alpha+')');gr.addColorStop(1,'transparent');
+    ctx.strokeStyle=gr;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(b.x,b.y);ctx.lineTo(x2,y2);ctx.stroke();
+  });
+  requestAnimationFrame(tick);
+}
+tick();
+window.addEventListener('scroll',()=>{document.getElementById('progress-bar').style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

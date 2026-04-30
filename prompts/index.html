@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prompt Library — Run On AI | 50+ Prompts for Business</title>
+<meta name="description" content="Browse 50+ tested prompts for business writing, client communication, marketing, SEO, and building tools with AI. Free to copy and use.">
+<meta property="og:title" content="Prompt Library — Run On AI">
+<meta property="og:description" content="50+ real prompts for real business tasks. Filter by category. Copy with one click.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://runonai.io/prompts">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#05050a;--card:#0d0d18;--border:rgba(255,255,255,0.07);--cyan:#00D4FF;--purple:#9B6FEA;--pink:#FF6FD8;--text:#eeeef5;--muted:#8888aa;--green:#00E5A0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden}
+
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;background:rgba(5,5,10,0.65);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.nav-logo{font-weight:800;font-size:1.1rem;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:1.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-cta{background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700!important}
+
+.page-wrap{position:relative;z-index:1;padding-top:64px}
+
+/* Hero */
+.prompts-hero{padding:4rem 2rem 3rem;text-align:center;max-width:700px;margin:0 auto}
+.page-badge{display:inline-block;padding:.3rem .9rem;border:1px solid rgba(0,212,255,0.3);border-radius:999px;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem}
+.prompts-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
+.prompts-hero h1 span{background:linear-gradient(135deg,var(--cyan) 0%,var(--purple) 50%,var(--pink) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.prompts-hero p{font-size:1.05rem;color:var(--muted);max-width:560px;margin:0 auto 1rem}
+.hero-note{font-size:.82rem;color:var(--muted);opacity:.7}
+
+/* Controls */
+.prompts-controls{max-width:1100px;margin:0 auto 2rem;padding:0 2rem;display:flex;flex-direction:column;gap:1rem}
+.prompts-search{width:100%;padding:.75rem 1.1rem;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s}
+.prompts-search:focus{border-color:rgba(0,212,255,0.4)}
+.prompts-search::placeholder{color:var(--muted)}
+.filter-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.filter-btn{padding:.4rem 1rem;border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--muted);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.filter-btn:hover,.filter-btn.active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,0.08)}
+.filter-btn[data-cat="power"].active{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,0.08)}
+.filter-btn[data-cat="client"].active{border-color:var(--purple);color:var(--purple);background:rgba(155,111,234,0.1)}
+.filter-btn[data-cat="business"].active{border-color:var(--pink);color:var(--pink);background:rgba(255,111,216,0.1)}
+.filter-btn[data-cat="content"].active{border-color:var(--green);color:var(--green);background:rgba(0,229,160,0.1)}
+.filter-btn[data-cat="insider"].active{border-color:#f5c542;color:#f5c542;background:rgba(245,197,66,0.08)}
+
+/* Count */
+.prompts-count{font-size:.85rem;color:var(--muted);max-width:1100px;margin:0 auto .5rem;padding:0 2rem}
+
+/* Grid */
+.prompts-grid{max-width:1100px;margin:0 auto 4rem;padding:0 2rem;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem}
+
+/* Card */
+.prompt-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.4rem;display:flex;flex-direction:column;gap:.75rem;transition:border-color .25s,transform .2s;cursor:default}
+.prompt-card:hover{border-color:rgba(0,212,255,0.25);transform:translateY(-2px)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
+.card-cat{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;flex-shrink:0}
+.cat-power{background:rgba(0,212,255,0.12);color:var(--cyan)}
+.cat-client{background:rgba(155,111,234,0.15);color:var(--purple)}
+.cat-business{background:rgba(255,111,216,0.12);color:var(--pink)}
+.cat-content{background:rgba(0,229,160,0.1);color:var(--green)}
+.cat-insider{background:rgba(245,197,66,0.1);color:#f5c542}
+.card-title{font-weight:700;font-size:.95rem;line-height:1.35;color:var(--text)}
+.card-desc{font-size:.85rem;color:var(--muted);line-height:1.55}
+.card-prompt{background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:.85rem;font-family:ui-monospace,'Cascadia Code','Fira Code',monospace;font-size:.8rem;color:#ccc;line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.card-prompt em{color:rgba(255,255,255,0.4);font-style:normal}
+.copy-btn{align-self:flex-end;padding:.4rem .9rem;border:1px solid var(--border);border-radius:6px;background:transparent;color:var(--muted);font-family:'Inter',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.4rem}
+.copy-btn:hover{border-color:rgba(0,212,255,0.4);color:var(--cyan)}
+.copy-btn.copied{border-color:var(--green);color:var(--green)}
+
+/* No results */
+.no-results{text-align:center;padding:4rem 2rem;color:var(--muted);display:none;grid-column:1/-1}
+.no-results.show{display:block}
+
+/* CTA strip */
+.prompts-cta{text-align:center;padding:3rem 2rem 5rem;border-top:1px solid var(--border)}
+.prompts-cta h2{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.prompts-cta p{color:var(--muted);margin-bottom:1.5rem}
+.btn-primary{display:inline-block;padding:.8rem 1.8rem;background:linear-gradient(135deg,var(--cyan),var(--purple));border-radius:8px;font-weight:700;font-size:.95rem;color:#fff;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-ghost{display:inline-block;padding:.8rem 1.8rem;border:1px solid var(--border);border-radius:8px;font-weight:600;font-size:.95rem;color:var(--text);text-decoration:none;margin-left:.8rem;transition:border-color .2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.3)}
+
+footer{position:relative;z-index:1;padding:2.5rem 2rem;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:center;gap:1.2rem}
+.footer-brand{font-weight:800;font-size:1rem;background:linear-gradient(135deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.footer-links{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;justify-content:center}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:600px){
+  .nav-links li:not(:last-child):not(:nth-last-child(2)){display:none}
+  .prompts-hero{padding:3rem 1.2rem 2rem}
+  .prompts-controls,.prompts-count,.prompts-grid{padding:0 1.2rem}
+  .prompts-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<nav>
+  <a href="/" class="nav-logo">Run On AI</a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/tools">Tools</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><a href="/prompts" class="active">Prompts</a></li>
+    <li><a href="/faq">FAQ</a></li>
+    <li><a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a></li>
+    <li><a href="/free" class="nav-cta">Free Prompts →</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <header class="prompts-hero reveal">
+    <span class="page-badge">Prompt Library</span>
+    <h1>Copy. Paste.<br><span>Actually use it.</span></h1>
+    <p>50+ tested prompts for real business tasks. Filter by category, search by keyword, copy with one click.</p>
+    <p class="hero-note">Swap anything in <em style="color:var(--cyan)">[brackets]</em> for your real details.</p>
+  </header>
+
+  <div class="prompts-controls reveal">
+    <input type="text" class="prompts-search" id="promptSearch" placeholder="Search prompts…" autocomplete="off">
+    <div class="filter-row">
+      <button class="filter-btn active" data-cat="all">All (50+)</button>
+      <button class="filter-btn" data-cat="power">⚡ Power Phrases</button>
+      <button class="filter-btn" data-cat="client">🤝 Client Attraction</button>
+      <button class="filter-btn" data-cat="business">🔧 Business Tools</button>
+      <button class="filter-btn" data-cat="content">✍️ Content Creation</button>
+      <button class="filter-btn" data-cat="insider">🔑 Insider Techniques</button>
+    </div>
+  </div>
+
+  <p class="prompts-count" id="promptCount">Showing all 51 prompts</p>
+
+  <div class="prompts-grid" id="promptGrid">
+
+    <!-- POWER PHRASES -->
+    <div class="prompt-card" data-cat="power" data-title="Step-by-Step Activator">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">Step-by-Step Activator</div>
+      <div class="card-desc">Forces the AI to show its reasoning before giving you an answer. Use on anything important you're going to act on.</div>
+      <div class="card-prompt">Before you answer, take a deep breath and work through this step by step. Show me your reasoning, then give me your final answer.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="power" data-title="10 Options Then Best">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">10 Options, Then Best</div>
+      <div class="card-desc">Breaks the AI out of its first-answer habit. Gets breadth first, then depth. Especially useful for headlines and strategies.</div>
+      <div class="card-prompt">Give me 10 different approaches to this. Then tell me which one you think is strongest and why.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="power" data-title="Expert Role Stack">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">Expert Role Stack</div>
+      <div class="card-desc">Assign a specific expert identity before your request. The AI shifts its perspective and outputs significantly improve.</div>
+      <div class="card-prompt">You are a [senior copywriter / experienced accountant / seasoned trade contractor] with 15 years of real-world experience. [Your request here.]</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="power" data-title="Devil's Advocate">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">Devil's Advocate</div>
+      <div class="card-desc">Stress-test any plan before you commit. Best used before big decisions, new pricing, or anything irreversible.</div>
+      <div class="card-prompt">Here's what I'm planning to do: [describe your plan]. Argue against it as hard as you can. What could go wrong? What would a skeptic say?</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="power" data-title="What Am I Missing">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">What Am I Missing?</div>
+      <div class="card-desc">The question most people forget. Surfaces blind spots before they cost you. Use on any plan, proposal, or strategy.</div>
+      <div class="card-prompt">What am I not asking that I should be asking about this? What have I not considered?</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="power" data-title="Constraint Setter">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">Constraint Setter</div>
+      <div class="card-desc">Tighter constraints produce better outputs. This phrase format works for any writing task where format matters.</div>
+      <div class="card-prompt">Write this in under [word count]. Use plain language. No jargon. No bullet points. First sentence must hook. Last sentence must drive action.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="power" data-title="Improve My Prompt">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">Improve My Prompt</div>
+      <div class="card-desc">Paste a prompt you've been using and ask the AI to make it better. Self-improving prompting loop.</div>
+      <div class="card-prompt">Here is a prompt I've been using: [paste prompt]. Tell me what's weak about it, what context is missing, and give me an improved version.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="power" data-title="Explain Like I'm Not Technical">
+      <div class="card-top"><span class="card-cat cat-power">Power Phrase</span></div>
+      <div class="card-title">Explain Like I'm Not Technical</div>
+      <div class="card-desc">Forces clarity. Cuts through jargon on any topic — tax, legal, SEO, software. Use when you want a real explanation.</div>
+      <div class="card-prompt">Explain [topic] like I have zero technical background. Use real examples I'd encounter in everyday business. Under 200 words.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <!-- CLIENT ATTRACTION -->
+    <div class="prompt-card" data-cat="client" data-title="The Problem Post">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">The Problem Post</div>
+      <div class="card-desc">Describe your ideal client's exact problem before you mention your service. The right people will read this and think "that's me."</div>
+      <div class="card-prompt">Write a social post that describes the exact situation [my ideal client] is in right now — their frustration, what's costing them, what they've already tried. Don't mention my service until the last line. Under 100 words. First sentence must be a hook.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="client" data-title="The Filter Post">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">The Filter Post</div>
+      <div class="card-desc">Attract the clients you want and repel the ones you don't. Both outcomes are wins.</div>
+      <div class="card-prompt">Write a social post about who I do and don't work with. Be direct. My ideal client is [describe]. I don't want to work with [describe]. Tone: confident but not arrogant. Under 120 words.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="client" data-title="Follow-Up Email">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">Quote Follow-Up Email</div>
+      <div class="card-desc">Professional but not desperate. Reminds without pressuring. Works in any service industry.</div>
+      <div class="card-prompt">You are an experienced [trade/profession] with 15 years of client-facing work. Write a follow-up email to a client I quoted [X] days ago. Professional but warm. Under 5 sentences. Don't sound desperate. Don't ask "did you get my quote?"</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="client" data-title="Google Review Request">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">Google Review Request</div>
+      <div class="card-desc">Gets you a review people actually read — not just "Great service, 5 stars." Real testimonials sell the next job.</div>
+      <div class="card-prompt">Write a short message asking [client name] for a Google review. Ask them to mention: (1) what they were worried about before hiring us, (2) what specifically changed, (3) who they'd recommend us to. Keep it conversational, no pressure. Under 80 words.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="client" data-title="Story Hook Post">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">Story Hook Post</div>
+      <div class="card-desc">Before-and-after storytelling that feels real. The structure that earns trust faster than any sales pitch.</div>
+      <div class="card-prompt">Write a social post using this story structure: (1) A client came to me with [problem]. (2) Here's what we discovered when we looked closer. (3) What we did. (4) What changed for them. Real, specific, no fluff. Under 150 words.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="client" data-title="Difficult Client Email">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">Difficult Situation Email</div>
+      <div class="card-desc">When something's gone wrong or a client's pushing back. Professional, de-escalating, and clear.</div>
+      <div class="card-prompt">Write an email responding to a client who is [upset about / questioning / pushing back on]: [describe situation]. I want to: acknowledge their concern, explain what happened without making excuses, and propose a next step. Calm, professional, under 150 words.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="client" data-title="Value-Led Cold Outreach">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">Value-Led Cold Outreach</div>
+      <div class="card-desc">Cold messages that don't feel cold. Lead with value, not a pitch.</div>
+      <div class="card-prompt">Write a cold outreach message to [ideal client type] for my [business type]. Don't open with what I do. Open with a specific insight, observation, or problem relevant to them. Under 100 words. End with a low-pressure question, not a call to book.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="client" data-title="No-Show Message">
+      <div class="card-top"><span class="card-cat cat-client">Client Attraction</span></div>
+      <div class="card-title">No-Show Message</div>
+      <div class="card-desc">When someone ghosts after an enquiry. One message that's firm but leaves the door open.</div>
+      <div class="card-prompt">Write a short message to a client who enquired [X days/weeks] ago and hasn't responded since. Warm but direct. Give them an easy out — "no worries if you've gone another direction." Under 60 words.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <!-- BUSINESS TOOLS -->
+    <div class="prompt-card" data-cat="business" data-title="Margin Reality Check">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Margin Reality Check</div>
+      <div class="card-desc">Find out if you're actually making money before you send another quote. Most trade businesses are surprised by this exercise.</div>
+      <div class="card-prompt">Help me calculate my real margin on a typical job. Ask me: (1) materials cost, (2) labour hours and rate, (3) overhead allocation per job, (4) any other costs. Then calculate gross margin, net margin, and tell me if my pricing is sustainable. Point out anything that looks off.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Quote Generator">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Quote Generator</div>
+      <div class="card-desc">Professional one-page quote ready to send. Takes 10 minutes instead of 45.</div>
+      <div class="card-prompt">Generate a professional one-page quote for a [type of job]. Details: client name [X], scope [describe], inclusions [list], exclusions [list], timeline [X weeks], price [$ amount], payment terms [deposit + balance]. Format: clean, professional, no legal jargon. Include a brief scope summary at the top.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="SOP Builder">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">SOP Builder</div>
+      <div class="card-desc">Every time you explain the same thing twice, you're losing money. Document it once with AI.</div>
+      <div class="card-prompt">Help me document a standard operating procedure for: [process name]. Ask me questions about how I currently do it, who's involved, what tools are used, and what the output should be. Then write it up as a clear step-by-step SOP I can hand to anyone new.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Website Copy Writer">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Service Page Writer</div>
+      <div class="card-desc">Give the AI everything about your business and get a full service page back. Replace the brackets with real details — the more specific, the better.</div>
+      <div class="card-prompt">Write a service page for [service type]. My business: [name, location, years operating]. Ideal clients: [describe]. What makes us different: [be specific]. Services included: [list]. Areas covered: [suburbs/regions]. Tone: [professional / warm / direct]. Include: hero headline, 3 key benefits, process overview (3 steps), FAQ section (3 questions), call to action.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Suburb Landing Page">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Suburb Landing Page</div>
+      <div class="card-desc">Local SEO content that ranks. Each page specific to a suburb, not a copy-paste template.</div>
+      <div class="card-prompt">Write a suburb landing page for [service] in [suburb name], [state]. Include: (1) opening paragraph mentioning the suburb specifically, (2) why locals choose [service type] in this area, (3) our services, (4) 3 FAQs specific to this location, (5) strong CTA. Do not make it sound like a template — make it feel local and specific.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Tool Builder Brief">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Tool Builder Brief</div>
+      <div class="card-desc">The starting prompt for building custom software with Claude Code. Non-technical, plain English.</div>
+      <div class="card-prompt">I want to build a [type of tool — e.g. calculator, tracker, drawing tool]. Here's what it needs to do: [describe inputs, outputs, and logic]. I'm not a developer. Build this as a web app I can open in a browser. Start simple — I'll tell you what to add as we go.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Tax Research Starter">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Tax Research Starter</div>
+      <div class="card-desc">Get plain-English information on tax questions before you pay for an accountant's time asking the basics.</div>
+      <div class="card-prompt">I run a [type of business] in Australia. I want to understand [tax topic — e.g. claiming a home office, vehicle expenses, GST on materials]. Explain in plain English what the ATO rules are, what I can and can't claim, and what records I need. Note: I'll verify with my accountant before acting on this.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Client Brief Template">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Client Brief Template</div>
+      <div class="card-desc">A proper intake form for new enquiries. Stops the back-and-forth before a quote even happens.</div>
+      <div class="card-prompt">Create a client intake brief template for a [type of business]. Include fields for: project type, timeline, budget range, location, current situation, what they've already tried, who's making the decision, and any other info relevant to [your service]. Make it feel professional but easy to fill out — not a legal document.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Competitor Intelligence">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Competitor Intelligence</div>
+      <div class="card-desc">Understand what your competitors are doing without spending hours researching manually.</div>
+      <div class="card-prompt">Research [competitor name or type] and tell me: (1) what they're positioning on, (2) what their pricing or offer looks like, (3) what their reviews say they do well and poorly, (4) gaps in their offering I could fill. Present this as a brief competitive summary I can act on.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="business" data-title="Google Business Profile Post">
+      <div class="card-top"><span class="card-cat cat-business">Business Tools</span></div>
+      <div class="card-title">Google Business Profile Post</div>
+      <div class="card-desc">Regular GBP posts help local SEO and keep your profile active. One prompt, one post, done.</div>
+      <div class="card-prompt">Write a Google Business Profile post for [business type] in [suburb/city]. Topic: [recent project / seasonal offer / service highlight / tip]. Under 200 words. Include a call to action. Do not use hashtags. Sound like a real local business, not a marketing agency.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <!-- CONTENT CREATION -->
+    <div class="prompt-card" data-cat="content" data-title="Content Repurposer">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">Content Repurposer</div>
+      <div class="card-desc">One idea, five pieces of content, 30 minutes. Consistency without burning out.</div>
+      <div class="card-prompt">Take this piece of content: [paste your content]. Turn it into: (1) a TikTok hook + caption, (2) an Instagram post caption, (3) a LinkedIn post, (4) a Twitter/X thread (3–4 tweets), (5) a YouTube Short title and description. Keep the core message the same but adapt the tone and format for each platform.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="content" data-title="Voice Capture">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">Voice Capture</div>
+      <div class="card-desc">Get the AI writing in your voice before you ask it to write anything. Do this once, save it as your custom instructions.</div>
+      <div class="card-prompt">Here are three examples of how I write: [paste 3 examples — emails, posts, texts]. Analyse my voice: sentence length, tone, vocabulary, what I avoid, what I always do. Then write a summary of my writing style I can use as instructions going forward.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="content" data-title="Weekly Content Plan">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">Weekly Content Plan</div>
+      <div class="card-desc">Never stare at a blank screen wondering what to post. One prompt generates a full week.</div>
+      <div class="card-prompt">Create a 5-post social media content plan for [week / this month] for my [business type]. Business: [describe]. Target audience: [describe]. Mix of content: educational, story-based, client-attraction, behind-the-scenes, and a CTA post. Give me a hook for each and a 2-sentence caption outline.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="content" data-title="AI Voice Remover">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">AI Voice Remover</div>
+      <div class="card-desc">The one prompt that stops your content sounding like every other AI-generated post.</div>
+      <div class="card-prompt">Rewrite this in my voice: [paste content]. Rules: (1) No corporate language. (2) No buzzwords like "leverage," "seamless," "transformative." (3) Match this style: [paste 1–2 examples of your own writing]. (4) If you're unsure of my voice, ask me for more examples before rewriting.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="content" data-title="Blog Post Outline">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">Blog Post Outline</div>
+      <div class="card-desc">A solid outline beats writing from a blank page every time. Build the structure first, fill it in after.</div>
+      <div class="card-prompt">Create a blog post outline for: [topic]. Target audience: [describe]. Goal: [inform / attract clients / rank on Google for keyword]. Include: working title (3 options), intro hook, 4–6 H2 subheadings with brief descriptions, conclusion approach, and a call to action. Make it genuinely useful, not SEO padding.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="content" data-title="TikTok Hook Generator">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">TikTok Hook Generator</div>
+      <div class="card-desc">The first 3 seconds decide everything. Generate 10 options fast.</div>
+      <div class="card-prompt">Generate 10 TikTok video hook lines (first 3 seconds) for a video about: [topic]. My niche: [describe]. Rules: start with a statement or question that creates pattern interruption. Don't start with "In this video…" or "Today I'm going to." Vary the emotional hook — curiosity, fear of missing out, surprising fact, relatable frustration.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="content" data-title="Email Newsletter">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">Email Newsletter</div>
+      <div class="card-desc">One useful email your subscribers will actually read. No fluff, no padding.</div>
+      <div class="card-prompt">Write an email newsletter for [audience]. Topic: [one specific useful thing]. Format: warm opening (1 sentence), the insight or tip (3–4 short paragraphs), one practical thing they can do today, a short sign-off. Tone: [describe your voice]. Under 350 words. Do not pad it. Every sentence should earn its place.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="content" data-title="Caption From Photo">
+      <div class="card-top"><span class="card-cat cat-content">Content Creation</span></div>
+      <div class="card-title">Caption From A Job Photo</div>
+      <div class="card-desc">Turn a project photo into a post. Describe what's in the photo and get a ready-to-post caption.</div>
+      <div class="card-prompt">Write an Instagram caption for a photo of: [describe what's in the photo — before/after, detail shot, process shot]. My business: [type]. Tone: [describe]. Include: what the challenge was, what we did, and a relevant CTA. No hashtag spam — 3–5 relevant hashtags max at the end.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <!-- INSIDER TECHNIQUES -->
+    <div class="prompt-card" data-cat="insider" data-title="Custom Instructions Template">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Custom Instructions Template</div>
+      <div class="card-desc">Set this once and every conversation starts with full context. The single highest-leverage thing you can do in AI setup.</div>
+      <div class="card-prompt">Help me write my custom instructions for Claude/ChatGPT. Ask me these questions one at a time: (1) What do I do and who do I serve? (2) What's my communication style? (3) What do I never want AI to do? (4) What format do I prefer for responses? (5) What context would help AI give better responses every time? Then write the instructions based on my answers.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="insider" data-title="Research Deep Dive">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Research Deep Dive</div>
+      <div class="card-desc">The prompt that turns AI into a proper research partner. Goes beyond surface answers.</div>
+      <div class="card-prompt">I want to deeply understand [topic]. I already know: [what you know]. I want to understand: (1) the 20% of concepts that explain 80% of outcomes, (2) common misconceptions, (3) what experts argue about, (4) practical implications for [your context]. Go deep, not wide. Flag anything you're uncertain about.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="insider" data-title="Skill Learning Plan">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Skill Learning Accelerator</div>
+      <div class="card-desc">Learn almost any skill 5x faster. Works for SEO, pricing, content, coding, sales — anything with a learning curve.</div>
+      <div class="card-prompt">I want to learn [skill] from scratch. I have [X hours per week] to dedicate. Build me a 30-day learning plan with: daily tasks, the best free resources, how to measure progress, and the 20% of the skill that gives 80% of the results. Be specific — no vague advice like "watch YouTube videos."</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="insider" data-title="Claude Code Starter">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Claude Code Starter</div>
+      <div class="card-desc">The starting prompt structure for building your first tool. Non-technical version.</div>
+      <div class="card-prompt">I want to build a tool that [describe what it does]. I'm not a developer. Let's build this step by step. Start by asking me: (1) Who uses it, (2) What inputs they provide, (3) What outputs they need, (4) Any calculations or logic involved. Then propose the simplest possible version we can build first and test. We'll add features after the basics work.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="insider" data-title="Fact Check Mode">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Fact Check Mode</div>
+      <div class="card-desc">AI can confidently state things that are wrong. This prompt forces it to flag uncertainty before you act on bad info.</div>
+      <div class="card-prompt">Answer my question, but: (1) clearly label anything you're uncertain about, (2) tell me what I should verify independently before acting on this, (3) if there are things you don't know, say so directly rather than guessing. My question: [your question].</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="insider" data-title="Context Primer">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Context Primer</div>
+      <div class="card-desc">Paste this at the start of any new chat to give the AI full business context without repeating yourself every time.</div>
+      <div class="card-prompt">Before we start, here is everything you need to know about my business: [Business name and type]. [Location]. [Services offered]. [Target clients]. [Tone and voice — how I communicate]. [What I never want you to do — buzzwords, formal language, etc.]. [Any other context]. Always keep this in mind for everything I ask you.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="insider" data-title="Decision Framework">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Decision Framework</div>
+      <div class="card-desc">For any major decision where you're going back and forth. Gets structured clarity fast.</div>
+      <div class="card-prompt">I'm trying to decide: [describe decision]. Options I'm considering: [list them]. Help me think through this using a simple framework: (1) What am I actually optimising for? (2) What are the real trade-offs? (3) What would I regret more — doing this or not doing it? (4) What's the reversibility of each option? Give me a recommendation at the end.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="prompt-card" data-cat="insider" data-title="Meeting Prep">
+      <div class="card-top"><span class="card-cat cat-insider">Insider Technique</span></div>
+      <div class="card-title">Meeting Prep</div>
+      <div class="card-desc">Walk into any important conversation prepared. Client meeting, supplier negotiation, difficult conversation — all covered.</div>
+      <div class="card-prompt">I have a [meeting type] with [who] about [topic]. Help me prepare: (1) What are the 3 most important things I want to achieve? (2) What objections or pushback should I expect and how do I handle them? (3) What questions should I ask them? (4) What's my ideal outcome vs acceptable outcome? Give me a brief prep sheet.</div>
+      <button class="copy-btn" onclick="copyPrompt(this)"><span>📋</span> Copy</button>
+    </div>
+
+    <div class="no-results" id="noResults">No prompts match that search. Try different keywords or <a href="/prompts" style="color:var(--cyan)">clear the filter</a>.</div>
+
+  </div><!-- /.prompts-grid -->
+
+  <div class="prompts-cta reveal">
+    <h2>Want the full pack as a PDF?</h2>
+    <p>Download all 50 prompts formatted and organised — free.</p>
+    <a href="/free" class="btn-primary">Get the free download →</a>
+    <a href="/blog" class="btn-ghost">Read the blog</a>
+  </div>
+
+</div><!-- /.page-wrap -->
+
+<footer>
+  <span class="footer-brand">Run On AI</span>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/about">About</a><a href="/tools">Tools</a>
+    <a href="/blog">Blog</a><a href="/prompts">Prompts</a><a href="/faq">FAQ</a>
+    <a href="/free">Free Download</a><a href="/privacy">Privacy</a>
+    <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
+  </div>
+</footer>
+
+<script>
+// Canvas
+const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
+let W,H,mouse={x:-999,y:-999};
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+resize();window.addEventListener('resize',resize);
+window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+const BEAMS=Array.from({length:4},()=>({x:Math.random()*1400,y:Math.random()*900,angle:Math.random()*Math.PI*2,speed:0.3+Math.random()*0.4,len:220+Math.random()*140,hue:Math.random()>0.5?'rgba(0,212,255,':'rgba(155,111,234,',alpha:0.05+Math.random()*0.05}));
+function tick(){
+  ctx.clearRect(0,0,W,H);
+  for(let x=0;x<W+28;x+=28)for(let y=0;y<H+28;y+=28){
+    const d=Math.hypot(x-mouse.x,y-mouse.y),g=Math.max(0,1-d/160),a=0.06+g*0.38;
+    ctx.fillStyle=g>0.1?`rgba(0,212,255,${a})`:`rgba(120,120,180,${a*0.5})`;
+    ctx.beginPath();ctx.arc(x,y,0.9+g*1.1,0,Math.PI*2);ctx.fill();
+  }
+  BEAMS.forEach(b=>{
+    b.x+=Math.cos(b.angle)*b.speed;b.y+=Math.sin(b.angle)*b.speed;
+    if(b.x<-300||b.x>W+300||b.y<-300||b.y>H+300){b.x=Math.random()*W;b.y=Math.random()*H;b.angle=Math.random()*Math.PI*2;}
+    const x2=b.x+Math.cos(b.angle)*b.len,y2=b.y+Math.sin(b.angle)*b.len;
+    const gr=ctx.createLinearGradient(b.x,b.y,x2,y2);
+    gr.addColorStop(0,'transparent');gr.addColorStop(0.5,b.hue+b.alpha+')');gr.addColorStop(1,'transparent');
+    ctx.strokeStyle=gr;ctx.lineWidth=1.2;ctx.beginPath();ctx.moveTo(b.x,b.y);ctx.lineTo(x2,y2);ctx.stroke();
+  });
+  requestAnimationFrame(tick);
+}
+tick();
+
+// Reveal
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.05});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Copy
+function copyPrompt(btn){
+  const card=btn.closest('.prompt-card');
+  const text=card.querySelector('.card-prompt').textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.innerHTML='<span>✓</span> Copied!';
+    btn.classList.add('copied');
+    setTimeout(()=>{btn.innerHTML='<span>📋</span> Copy';btn.classList.remove('copied');},2000);
+  });
+}
+
+// Filter
+const filterBtns=document.querySelectorAll('.filter-btn');
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat=btn.dataset.cat;
+    const cards=document.querySelectorAll('.prompt-card');
+    cards.forEach(card=>{
+      if(cat==='all'||card.dataset.cat===cat){card.style.display='';} else {card.style.display='none';}
+    });
+    updateCount();
+  });
+});
+
+// Search
+const searchInput=document.getElementById('promptSearch');
+searchInput.addEventListener('input',()=>{
+  const q=searchInput.value.toLowerCase().trim();
+  filterBtns.forEach(b=>b.classList.remove('active'));
+  document.querySelector('[data-cat="all"]').classList.add('active');
+  document.querySelectorAll('.prompt-card').forEach(card=>{
+    const text=(card.dataset.title+' '+card.textContent).toLowerCase();
+    card.style.display=(!q||text.includes(q))?'':'none';
+  });
+  updateCount();
+});
+
+function updateCount(){
+  const visible=[...document.querySelectorAll('.prompt-card')].filter(c=>c.style.display!=='none');
+  const noRes=document.getElementById('noResults');
+  const countEl=document.getElementById('promptCount');
+  if(visible.length===0){
+    noRes.classList.add('show');
+    countEl.textContent='No prompts found';
+  } else {
+    noRes.classList.remove('show');
+    countEl.textContent=`Showing ${visible.length} prompt${visible.length!==1?'s':''}`;
+  }
+}
+</script>
+</body>
+</html>
