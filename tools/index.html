@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools I Actually Use — Run On AI</title>
+  <meta name="description" content="The exact tools I use to run my joinery business, build my own software, and create content — without hiring an agency or a developer." />
+  <meta property="og:title" content="AI Tools I Actually Use — Run On AI" />
+  <meta property="og:description" content="Not a sponsored list. The tools I actually use every day to build real things." />
+  <meta property="og:image" content="https://runonai.io/assets/og-image.png" />
+  <meta property="og:url" content="https://runonai.io/tools" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --bg:      #05050a;
+      --surface: #0d0d14;
+      --card:    #0f0f18;
+      --border:  rgba(255,255,255,0.07);
+      --cyan:    #00D4FF;
+      --purple:  #9B6FEA;
+      --pink:    #FF6FD8;
+      --text:    #eeeef5;
+      --muted:   #6666aa;
+      --radius:  14px;
+      --font:    'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    #progress-bar {
+      position: fixed; top: 0; left: 0;
+      height: 2px; width: 0%;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+      z-index: 1000; transition: width 0.1s linear;
+    }
+
+    #bg-canvas {
+      position: fixed; inset: 0;
+      z-index: 0; pointer-events: none;
+    }
+
+    .orb-layer { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(130px); will-change: transform; }
+    .orb-1 { width: 750px; height: 750px; background: var(--cyan);   opacity: 0.06; top: -250px; left: -200px; }
+    .orb-2 { width: 650px; height: 650px; background: var(--purple); opacity: 0.08; top: 40%; right: -200px; }
+    .orb-3 { width: 500px; height: 500px; background: var(--pink);   opacity: 0.04; bottom: -100px; left: 25%; }
+
+    nav {
+      position: sticky; top: 0; z-index: 300;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(5,5,10,0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-weight: 900; font-size: 1.05rem; letter-spacing: -0.03em;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--cyan), var(--purple)) !important;
+      color: #fff !important; padding: 9px 22px; border-radius: 9px;
+      font-weight: 700 !important; font-size: 0.85rem !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: translateY(-1px) !important; box-shadow: 0 0 30px rgba(0,212,255,0.3) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; z-index: 1;
+      max-width: 860px; margin: 0 auto;
+      padding: 110px 24px 70px; text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan); font-size: 0.74rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 6px 18px; border-radius: 100px; margin-bottom: 36px;
+      opacity: 0; animation: fadeUp 0.6s 0.1s ease forwards;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 900; line-height: 1.06; letter-spacing: -0.04em;
+      margin-bottom: 24px;
+      opacity: 0; animation: fadeUp 0.6s 0.25s ease forwards;
+    }
+    .grad {
+      background: linear-gradient(100deg, var(--cyan) 0%, var(--purple) 55%, var(--pink) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      background-size: 200% auto; animation: shimmer 4s linear infinite;
+    }
+    @keyframes shimmer { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted); max-width: 540px;
+      margin: 0 auto 20px; line-height: 1.75;
+      opacity: 0; animation: fadeUp 0.6s 0.4s ease forwards;
+    }
+    .hero-note {
+      font-size: 0.82rem; color: rgba(102,102,170,0.7);
+      opacity: 0; animation: fadeUp 0.6s 0.5s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      position: relative; z-index: 1;
+      max-width: 920px; margin: 0 auto;
+      padding: 70px 24px;
+    }
+
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--muted); max-width: 600px; line-height: 1.75;
+      margin-bottom: 52px;
+    }
+
+    /* ── TOOL CARD ── */
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 44px;
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .tool-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px;
+      background: radial-gradient(ellipse at 0% 0%, rgba(0,212,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .tool-card:hover {
+      border-color: rgba(0,212,255,0.25);
+      transform: translateY(-3px);
+    }
+    .tool-card.purple-tint::before {
+      background: radial-gradient(ellipse at 100% 0%, rgba(155,111,234,0.06) 0%, transparent 60%);
+    }
+    .tool-card.purple-tint:hover { border-color: rgba(155,111,234,0.3); }
+
+    .tool-header {
+      display: flex; align-items: flex-start; gap: 20px;
+      margin-bottom: 24px;
+    }
+    .tool-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+    .tool-icon.cyan-icon  { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.2); }
+    .tool-icon.purple-icon { background: rgba(155,111,234,0.08); border-color: rgba(155,111,234,0.2); }
+
+    .tool-meta { flex: 1; }
+    .tool-name {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .tool-tagline { font-size: 0.9rem; color: var(--muted); line-height: 1.5; }
+
+    .tool-tag {
+      display: inline-block;
+      background: rgba(0,212,255,0.07); border: 1px solid rgba(0,212,255,0.15);
+      color: var(--cyan); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 3px 10px; border-radius: 100px;
+      margin-left: 12px; vertical-align: middle;
+    }
+    .tool-tag.purple { background: rgba(155,111,234,0.07); border-color: rgba(155,111,234,0.2); color: var(--purple); }
+
+    .tool-body {
+      font-size: 0.97rem; color: rgba(200,200,230,0.8); line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .use-cases { list-style: none; margin-bottom: 28px; }
+    .use-cases li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.92rem; color: var(--muted); line-height: 1.6;
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .use-cases li:last-child { border-bottom: none; }
+    .use-cases li::before {
+      content: '→'; color: var(--cyan); font-size: 0.8rem;
+      font-weight: 700; margin-top: 2px; flex-shrink: 0;
+    }
+
+    .real-example {
+      background: rgba(0,212,255,0.04);
+      border: 1px solid rgba(0,212,255,0.12);
+      border-left: 3px solid var(--cyan);
+      border-radius: 10px; padding: 18px 22px; margin-bottom: 28px;
+    }
+    .real-example.purple {
+      background: rgba(155,111,234,0.04);
+      border-color: rgba(155,111,234,0.12);
+      border-left-color: var(--purple);
+    }
+    .example-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 6px;
+    }
+    .example-label.purple { color: var(--purple); }
+    .real-example p {
+      font-size: 0.9rem; color: rgba(200,200,230,0.85); line-height: 1.65;
+    }
+
+    .tool-link {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+      color: var(--cyan); text-decoration: none;
+      font-size: 0.83rem; font-weight: 700; letter-spacing: 0.02em;
+      padding: 10px 20px; border-radius: 9px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .tool-link:hover { background: rgba(0,212,255,0.15); transform: translateY(-1px); }
+    .tool-link.purple {
+      background: rgba(155,111,234,0.08); border-color: rgba(155,111,234,0.2);
+      color: var(--purple);
+    }
+    .tool-link.purple:hover { background: rgba(155,111,234,0.15); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px; background: var(--border);
+      margin: 0 24px; position: relative; z-index: 1;
+    }
+
+    /* ── PHILOSOPHY SECTION ── */
+    .philosophy {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 44px 48px;
+      position: relative; overflow: hidden;
+    }
+    .philosophy::before {
+      content: ''; position: absolute; inset: 0; border-radius: 20px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .philosophy h3 {
+      font-size: 1.3rem; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .philosophy p {
+      font-size: 0.97rem; color: var(--muted); line-height: 1.8; margin-bottom: 12px;
+    }
+    .philosophy p:last-child { margin-bottom: 0; }
+    .philosophy strong { color: var(--text); }
+
+    /* ── FREE CTA ── */
+    .free-cta {
+      position: relative; z-index: 1;
+      max-width: 920px; margin: 0 auto;
+      padding: 0 24px 100px;
+    }
+    .free-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 20px; padding: 56px 48px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .free-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(0,212,255,0.07) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .glow-line {
+      position: absolute; top: 0; left: 20%; right: 20%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent);
+    }
+    .free-card h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800; letter-spacing: -0.03em; margin-bottom: 14px;
+    }
+    .free-card p {
+      font-size: 1rem; color: var(--muted); max-width: 480px; margin: 0 auto 34px; line-height: 1.7;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      color: #fff; text-decoration: none;
+      font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em;
+      padding: 15px 34px; border-radius: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 0 rgba(0,212,255,0);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,212,255,0.3); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 32px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-brand {
+      font-weight: 800; font-size: 0.9rem;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+      nav { padding: 16px 20px; }
+      .nav-links li:not(:last-child) { display: none; }
+      .hero { padding: 80px 20px 50px; }
+      .section { padding: 50px 20px; }
+      .tool-card { padding: 28px 24px; }
+      .tool-header { flex-direction: column; gap: 14px; }
+      .philosophy { padding: 30px 24px; }
+      .free-card { padding: 40px 24px; }
+      footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+<canvas id="bg-canvas"></canvas>
+<div class="orb-layer">
+  <div class="orb orb-1" data-parallax="0.04"></div>
+  <div class="orb orb-2" data-parallax="0.06"></div>
+  <div class="orb orb-3" data-parallax="0.03"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Run On AI</a>
+  <ul class="nav-links">
+    <li><a href="/about">About</a></li>
+    <li><a href="/tools" class="active">Tools</a></li>
+    <li><a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a></li>
+    <li><a href="/free" class="nav-cta">Free Prompts →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">The actual stack</div>
+  <h1>
+    Tools I Use.<br>
+    <span class="grad">Not Tools I'm Paid to Promote.</span>
+  </h1>
+  <p class="hero-sub">
+    I run a joinery business in Sydney. I built my own cabinet drawing software.
+    I built my own website. I replaced my agency. Here's exactly what I used.
+  </p>
+  <p class="hero-note">No affiliate links. No sponsorships. Just what works.</p>
+</section>
+
+<!-- MAIN TOOLS -->
+<section class="section">
+  <p class="section-label">The Core Two</p>
+  <h2 class="section-title">Start here. These two cover 90% of it.</h2>
+  <p class="section-sub">
+    You don't need 12 AI tools. You need one that can think and one that can build.
+    Everything else is noise.
+  </p>
+
+  <!-- Claude Code -->
+  <div class="tool-card reveal">
+    <div class="tool-header">
+      <div class="tool-icon cyan-icon">⚡</div>
+      <div class="tool-meta">
+        <div class="tool-name">Claude Code <span class="tool-tag">For building things</span></div>
+        <div class="tool-tagline">Anthropic's AI that runs in your terminal and writes, edits, and builds software for you.</div>
+      </div>
+    </div>
+
+    <p class="tool-body">
+      This is the one that changed everything for me. I'm not a developer. I've never written
+      production code in my life. But I used Claude Code to build a full cabinet drawing application —
+      it takes room dimensions, calculates cabinet widths after panels and fillers, and produces
+      2D plans and elevations. Something that would have cost me thousands in custom software,
+      or hundreds per month in subscriptions. Built it myself in a few afternoons.
+      <br><br>
+      Claude Code doesn't just autocomplete — it reads your whole project, understands
+      what you're trying to do, and builds it piece by piece. You describe what you want
+      in plain English. It writes the code, runs it, fixes the errors, and keeps going.
+    </p>
+
+    <div class="real-example">
+      <div class="example-label">Real example from my business</div>
+      <p>
+        I needed a tool that calculates cabinet widths for a given room run — accounting for
+        panels, scribes, and filler sizes — and outputs a 2D top plan and front elevation
+        drawing. I described this to Claude Code. It asked clarifying questions. Then it built it.
+        No developer. No agency. No $400/month SaaS subscription. Just me and the tool.
+      </p>
+    </div>
+
+    <ul class="use-cases">
+      <li>Build web tools that replace expensive subscriptions for your specific trade or business</li>
+      <li>Create custom calculators — quotes, margins, material quantities, anything with numbers</li>
+      <li>Build your own website from scratch without paying a web developer</li>
+      <li>Automate repetitive tasks in your workflow that no off-the-shelf tool handles properly</li>
+      <li>Create client-facing tools (quote forms, project trackers) that are 100% yours</li>
+    </ul>
+
+    <a href="https://claude.ai/code" target="_blank" rel="noopener" class="tool-link">
+      Try Claude Code →
+    </a>
+  </div>
+
+  <!-- Claude Cowork -->
+  <div class="tool-card purple-tint reveal">
+    <div class="tool-header">
+      <div class="tool-icon purple-icon">🖥️</div>
+      <div class="tool-meta">
+        <div class="tool-name">Claude Cowork <span class="tool-tag purple">For non-technical people</span></div>
+        <div class="tool-tagline">The desktop version of Claude that works with your files, folders, and apps — no terminal required.</div>
+      </div>
+    </div>
+
+    <p class="tool-body">
+      Cowork is what I'd point anyone at who wants to use AI seriously but isn't technical.
+      It sits on your desktop, connects to the tools you already use, reads your files,
+      and actually does work — not just chats about it. You can build documents, manage projects,
+      generate content, and run complex workflows all from one place.
+      <br><br>
+      I used it to add all the context for my joinery business — services, pricing, suburb areas,
+      client types, the lot — and now when I need a service page, a quote template, or a suburb
+      landing page, it already knows everything it needs. No briefing. No back and forth.
+      Just results.
+    </p>
+
+    <div class="real-example purple">
+      <div class="example-label purple">Real example from my business</div>
+      <p>
+        I built the full InsideOut Joinery website using Cowork — service pages, suburb landing pages,
+        FAQs, meta descriptions, the works. What my old agency charged thousands for (and took weeks),
+        I now do myself. I also use it to build a full cost breakdown for every project type:
+        materials, labour, margin, GST, the whole picture. Took one afternoon to set up. I use it every week.
+      </p>
+    </div>
+
+    <ul class="use-cases">
+      <li>Build your own website content — service pages, landing pages, about pages, all of it</li>
+      <li>Create a complete cost and pricing breakdown for your business without a bookkeeper</li>
+      <li>Write professional proposals, quotes, and SOPs without staring at a blank Word doc</li>
+      <li>Build content systems — social posts, email sequences, scripts — that actually sound like you</li>
+      <li>Manage your business documents with an AI that knows your context every single session</li>
+    </ul>
+
+    <a href="https://claude.ai" target="_blank" rel="noopener" class="tool-link purple">
+      Try Claude Cowork →
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PHILOSOPHY -->
+<section class="section">
+  <p class="section-label">The honest bit</p>
+  <h2 class="section-title reveal">Why only two tools?</h2>
+
+  <div class="philosophy reveal">
+    <h3>Most people are collecting tools instead of using them.</h3>
+    <p>
+      There's a whole industry built around telling you that you need a different AI tool for every task.
+      One for writing. One for images. One for video. One for SEO. One for scheduling.
+      Before you know it, you've got eight subscriptions, none of them doing what you actually need,
+      and you're spending more time managing tools than running your business.
+    </p>
+    <p>
+      <strong>Claude does almost all of it.</strong> Writing, research, coding, analysis, strategy, content, documents —
+      one tool, one subscription, genuinely capable of most things you throw at it.
+      Claude Code handles the technical builds. Cowork handles everything else.
+    </p>
+    <p>
+      I'm not saying other tools don't exist or aren't useful. I'm saying most people would be better off
+      going deep on two tools than shallow on eight. Learn what they can actually do.
+      Build prompts and workflows that work for your specific situation.
+      That's where the real leverage is.
+    </p>
+    <p>
+      <strong>And if something comes along that genuinely does something these don't? I'll tell you.</strong>
+      That's the whole point of this — honest, specific, real.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FREE CTA -->
+<div class="free-cta">
+  <div class="free-card reveal">
+    <div class="glow-line"></div>
+    <h2>Get the Free Prompt Pack</h2>
+    <p>50 prompts for power phrases, client attraction, building your business, and the insider stuff most people never find.</p>
+    <a href="/free" class="btn-primary">Download Free →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Run On AI</span>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/tools">Tools</a>
+    <a href="/free">Free Prompts</a>
+    <a href="https://discord.gg/FVXFBwMz" target="_blank" rel="noopener">Discord</a>
+  </div>
+</footer>
+
+<script>
+// ── Canvas: dot grid + animated beams ──────────────────────────
+const canvas = document.getElementById('bg-canvas');
+const ctx    = canvas.getContext('2d');
+let W, H, mouse = { x: -999, y: -999 };
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+
+const BEAMS = Array.from({ length: 5 }, () => ({
+  x: Math.random() * 1400,
+  y: Math.random() * 900,
+  angle: Math.random() * Math.PI * 2,
+  speed: 0.3 + Math.random() * 0.4,
+  len:   260 + Math.random() * 180,
+  hue:   Math.random() > 0.5 ? '#00D4FF' : '#9B6FEA',
+  alpha: 0.06 + Math.random() * 0.07,
+}));
+
+function drawBeam(b) {
+  const dx = Math.cos(b.angle), dy = Math.sin(b.angle);
+  const x2 = b.x + dx * b.len, y2 = b.y + dy * b.len;
+  const g = ctx.createLinearGradient(b.x, b.y, x2, y2);
+  g.addColorStop(0,   'transparent');
+  g.addColorStop(0.5, b.hue.replace(')', `,${b.alpha})`).replace('rgb', 'rgba').replace('#00D4FF', `rgba(0,212,255,${b.alpha})`).replace('#9B6FEA', `rgba(155,111,234,${b.alpha})`));
+  g.addColorStop(1,   'transparent');
+  ctx.strokeStyle = g;
+  ctx.lineWidth = 1.2;
+  ctx.beginPath(); ctx.moveTo(b.x, b.y); ctx.lineTo(x2, y2); ctx.stroke();
+}
+
+function tick() {
+  ctx.clearRect(0, 0, W, H);
+  const spacing = 28, dotR = 0.9;
+  for (let x = 0; x < W + spacing; x += spacing) {
+    for (let y = 0; y < H + spacing; y += spacing) {
+      const dist = Math.hypot(x - mouse.x, y - mouse.y);
+      const glow = Math.max(0, 1 - dist / 160);
+      const alpha = 0.07 + glow * 0.45;
+      ctx.fillStyle = glow > 0.1
+        ? `rgba(0,212,255,${alpha})`
+        : `rgba(120,120,180,${alpha * 0.5})`;
+      ctx.beginPath(); ctx.arc(x, y, dotR + glow * 1.2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  BEAMS.forEach(b => {
+    b.x += Math.cos(b.angle) * b.speed;
+    b.y += Math.sin(b.angle) * b.speed;
+    if (b.x < -300 || b.x > W + 300 || b.y < -300 || b.y > H + 300) {
+      b.x = Math.random() * W; b.y = Math.random() * H;
+      b.angle = Math.random() * Math.PI * 2;
+    }
+    drawBeam(b);
+  });
+  requestAnimationFrame(tick);
+}
+tick();
+
+// ── Scroll progress ─────────────────────────────────────────────
+const bar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  bar.style.width = pct + '%';
+});
+
+// ── Reveal on scroll ────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      const siblings = e.target.parentElement.querySelectorAll('.reveal');
+      const idx = Array.from(siblings).indexOf(e.target);
+      setTimeout(() => e.target.classList.add('visible'), idx * 80);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── Orb parallax ───────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const sy = window.scrollY;
+  document.querySelectorAll('.orb[data-parallax]').forEach(orb => {
+    const f = parseFloat(orb.dataset.parallax);
+    orb.style.transform = `translateY(${sy * f}px)`;
+  });
+});
+</script>
+</body>
+</html>
